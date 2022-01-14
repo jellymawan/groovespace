@@ -1,3 +1,3 @@
 # INFO 340 Project
 
-This repository contains code for an interactive information web app, created for the _Client-Side Web Development_ course at the UW iSchool.
+This repository contains code our INFO 340 group's project topic proposal with details about our problem/data domain as well as an app description.
