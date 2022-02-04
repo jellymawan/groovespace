@@ -5,6 +5,14 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
+main {
+    padding: 2rem; 
+    background-color: black;
+}
+.row{
+    flex-direction: column;
+}
+/* navbar and footer styling */
 .navbar-brand{
     padding-left: 2rem;
     color:white;
@@ -13,6 +21,9 @@ body{
     top: 1.5rem;
     font-size: 2.5rem;
 }
+.navbar .container-fluid{
+    text-align: center;
+} 
 
 header, footer{
     background-color: black;
@@ -22,6 +33,13 @@ footer p, footer p a, .hamburger-menu i, .col{
     color: white;
     text-decoration: none;
 }
+.hamburger-menu{
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+.material-icons{
+    display: none;
+}
 .container{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -30,17 +48,22 @@ footer p, footer p a, .hamburger-menu i, .col{
     flex-direction: column;
 }
 
-.hamburger-menu{
-    padding: 1.5rem;
+/* main body styling */
+#music {
     font-size: 2rem;
+    font-weight: 300;
 }
-.navbar .container-fluid{
-    text-align: center;
-} 
 
-.material-icons{
-    display: none;
+#card-row {
+    padding-top: 2rem;
 }
+
+.card-title {
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+/* music page styling */
 .like-icon, .duet-icon{
     display: inline;
 }
@@ -50,13 +73,12 @@ a{
 .card-title, .card-text{
     color: black;
 }
-.row{
-    flex-direction: column;
-}
+
 @media(min-width: 768px){
     .row{
         flex-direction: row;
     }
+    /* navbar and footer styling - big screen */
     .hamburger-menu{
         display: none;
     }
@@ -90,6 +112,7 @@ a{
         display: inline;
         padding-left: .4rem;
     }
+    /* music page styling - big screen */
     .img-size{
         max-width: 40rem;
         border-radius: 8px;
@@ -100,21 +123,5 @@ a{
     }
 }
 
-main {
-    padding: 2rem; 
-    background-color: black;
-}
 
-#music {
-    font-size: 2rem;
-    font-weight: 300;
-}
 
-#card-row {
-    padding-top: 2rem;
-}
-
-.card-title {
-    font-size: 1.25rem;
-    font-style: italic;
-}
