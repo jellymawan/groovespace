@@ -1,0 +1,20 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+header {
+  background: purple;
+  padding: 10px 10px;
+  color: white;
+  text-align: center;
+  font-size: larger;
+}
+
+section, footer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+}

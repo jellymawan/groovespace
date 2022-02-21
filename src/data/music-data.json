@@ -1,0 +1,43 @@
+[
+    {
+        "artist":"Riko",
+        "title":"Future Shock",
+        "description":"Hardcore electric guitar.",
+        "release_date": "12/31/2021",
+        "duration":"2:45",
+        "cover": "img/Future Shock.jpeg"
+    },
+    {
+        "artist":"Fellar",
+        "title":"Into The Distance",
+        "description":"Piano with some hip pop in the background.",
+        "release_date": "3/1/2021",
+        "duration":"3:05",
+        "cover": "img/Black and White.jpeg"
+    },
+    {
+        "artist":"Shio",
+        "title":"Digital Shock",
+        "description":"Heavy metal.",
+        "release_date": "1/2/2022",
+        "duration":"3:15",
+        "cover": "../project-draft/img/Digital album cover.jpeg"
+    },
+    {
+        "artist":"Blanco",
+        "title":"Water Flows",
+        "description":"Piano with some hip pop in the background.",
+        "release_date": "11/13/2021",
+        "duration":"3:35",
+        "cover": "img/Moon.jpeg"
+    },
+    {
+        "artist":"Epik High",
+        "title":"Born Hater (Instrumental)",
+        "description":"Born Hater cover contest. Add on to this instrumental to enter the contest!",
+        "release_date":"11/19/2014",
+        "duration": "5:30",
+        "cover": "img/shoebox.jpg",
+        "audio":"audio/born-hater.mp3"
+    }
+]
