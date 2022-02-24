@@ -1,43 +1,123 @@
 [
     {
+        "id":1,
         "artist":"Riko",
         "title":"Future Shock",
         "description":"Hardcore electric guitar.",
         "release_date": "12/31/2021",
         "duration":"2:45",
-        "cover": "img/Future Shock.jpeg"
+        "cover": "../public/imgs/cover/Future Shock.jpeg",
+        "audio":"audio/future-shock.mp3",
+        "likes": 30,
+        "duets": 3
     },
     {
+        "id":2,
         "artist":"Fellar",
         "title":"Into The Distance",
         "description":"Piano with some hip pop in the background.",
         "release_date": "3/1/2021",
         "duration":"3:05",
-        "cover": "img/Black and White.jpeg"
+        "cover": "../public/imgs/cover/Black and White.jpeg",
+        "album":"audio/into-the-distance.mp3",
+        "likes": 15,
+        "duets": 0
     },
     {
+        "id":3,
         "artist":"Shio",
         "title":"Digital Shock",
         "description":"Heavy metal.",
         "release_date": "1/2/2022",
         "duration":"3:15",
-        "cover": "../project-draft/img/Digital album cover.jpeg"
+        "cover": "../public/imgs/cover/Digital album cover.jpeg",
+        "audio":"audio/digital-shock.mp3",
+        "likes": 20,
+        "duets": 0
     },
     {
-        "artist":"Blanco",
-        "title":"Water Flows",
-        "description":"Piano with some hip pop in the background.",
+        "id":4,
+        "artist":"GoodBMusic",
+        "title":"Melody of Nature",
+        "description":"Clasical violin music with piano in background.",
         "release_date": "11/13/2021",
-        "duration":"3:35",
-        "cover": "img/Moon.jpeg"
+        "duration":"3:02",
+        "cover": "../public/imgs/cover/Moon.jpeg",
+        "audio":"audio/melody-of-nature.mp3",
+        "likes": 3,
+        "duets": 0
     },
     {
+        "id":5,
         "artist":"Epik High",
         "title":"Born Hater (Instrumental)",
         "description":"Born Hater cover contest. Add on to this instrumental to enter the contest!",
         "release_date":"11/19/2014",
         "duration": "5:30",
-        "cover": "img/shoebox.jpg",
-        "audio":"audio/born-hater.mp3"
+        "cover": "../public/imgs/cover/shoebox.jpg",
+        "audio":"audio/born-hater.mp3",
+        "likes": 150,
+        "duets": 0
+    },
+    {
+        "id":6,
+        "artist":"Blanco",
+        "title":"Water Flows",
+        "description":"Cover of Yiruma's famous song.",
+        "release_date": "11/13/2021",
+        "duration":"3:11",
+        "cover": "../public/imgs/cover/Moon.jpeg",
+        "audio": "audio/water-flows.mp3",
+        "likes": 5,
+        "duets": 0
+    },
+    {
+        "id":7,
+        "artist":"AnaB",
+        "title":"Lofi",
+        "description":"My short lofi sample",
+        "release_date":"06/17/2019",
+        "duration": "2:02",
+        "cover": "../public/imgs/cover/lofi.jpg",
+        "audio":"audio/lofi.,p3",
+        "likes": 48,
+        "duets": 0
+    },
+    {
+        "id":8,
+        "artist":"Halluci Nation",
+        "title":"Electric Pow Wow",
+        "description": "Traditional Pow Wow music remixed with Dubstep",
+        "release_date":"10/29/2010",
+        "duration": "3:37",
+        "cover": "../public/imgs/cover/halluci-nation.jpg",
+        "audio":"audio/electric pow wow.mp3",
+        "likes": 3000,
+        "duets": 0,
+        "duted_from_id": 0
+    },
+    {
+        "id":9,
+        "artist":"pyreneesjedi",
+        "title":"GUITAR RIFF",
+        "description":"neeed to change bassline",
+        "release_date":"6//14/2012",
+        "duration": "1:58",
+        "cover":  "../public/imgs/cover/music.jpg",
+        "audio":"audio/GUITAR RIF.mp3",
+        "likes": 168,
+        "duets": 0
+    },
+    {
+        "id":10,
+        "artist":"Keys of Moon",
+        "title":"Warm Memories",
+        "description":"Emotional inspiring piano",
+        "release_date":"08/15/2017",
+        "duration": "2:07",
+        "cover": "../public/imgs/cover/warm-memories.jpg",
+        "audio":"audio/Warm-Memories-Emotional-Inspiring-Piano.mp3",
+        "likes": 180,
+        "duets": 0
     }
 ]
