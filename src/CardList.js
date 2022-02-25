@@ -6,7 +6,7 @@ export function MusicCard(props) {
         <div className="card">
           <div className="card-body">
             <p className="card-title">{props.song.title}</p>
-            <p className="card-subtitle mb-2 text-muted">{"Artist:" + props.song.artist}</p>
+            <p className="card-subtitle mb-2 text-muted">{"Artist: " + props.song.artist}</p>
             <img src={props.song.cover} className="card-img-top" alt={props.song.title} />
             <p className="card-text">{props.song.description}</p>
             <a href="#" className="btn btn-dark">Listen</a>
