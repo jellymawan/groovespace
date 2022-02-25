@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 import App from './App';
+import musicData from './data/music-data.json';
 
 ReactDOM.render(
-    <App />,  document.getElementById('root')
+    <App songs={musicData}/>,  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

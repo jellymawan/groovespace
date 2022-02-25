@@ -1,12 +1,18 @@
 import React, { useState } from 'react'; //import React Component
 import * as Static from './StaticPages';
+import {CardList} from './CardList.js';
 
-function App() {
+function App(props) {
   console.log("hello world");
 
   return (
     <div>
-      <Static.Footer />
+      <div>
+        <CardList songs={props} />
+      </div>
+      <div>
+        <Static.Footer />
+      </div>
     </div>
   );
 }
