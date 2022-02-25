@@ -10,7 +10,7 @@ function App(props) {
     <div>
       <HeaderNav />
       <div>
-        <CardList songs={props} />
+        <CardList songs={props.songs} />
       </div>
       <div>
         <Static.Footer />
