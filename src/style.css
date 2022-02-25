@@ -20,6 +20,11 @@ main {
     top: 1.5rem;
     font-size: 2.5rem;
 }
+
+.navbar-dark a.navbar-brand, .navbar-dark .navbar-nav a.nav-link{
+    color: black;
+}
+
 .navbar .container-fluid{
     text-align: center;
 }
