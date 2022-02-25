@@ -15,33 +15,30 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="navbar-collapse">
-                    <a class="navbar-brand" href="#">groovespace</a>
-                    <div class="hamburger-menu">
-                        <a href="#"><i class="fa fa-bars" aria-label="navigation"></i></a>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist">
-                        <button class="btn btn-outline-secondary" type="submit">SEARCH</button>
-                    </form>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-current="page" href="#">BROWSE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-current="page" href="#">UPLOAD</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">SIGN IN</a>
-                    </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand nav-color" href="#">groovespace</a>
+            
+          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">BROWSE <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">UPLOAD</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">SIGN IN</a>
+                </li>
+              </ul>
+              <form class="d-flex m-auto">
+                <label hidden for="search">Search</label>
+                <input class="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist" id="search">
+                <button class="btn btn-outline-secondary" type="submit">SEARCH</button>
+            </form>
             </div>
           </nav>
     </header>
@@ -121,12 +118,14 @@
         </div>
     </main>
     <footer>
-        <div class="container">
-            <p><a href="about.html">About</a></p>
-            <p><a href="mailto:groovespace@groove.uw.edu"><span class="material-icons">email</span>groovespace@groove.uw.edu</a></p>
-            <p><a href="tel:123-456-7890"><span class="material-icons">phone</span>123-456-7890</a></p>
-            <p>&copy; INFO 340 Group A10 2022</p>
-          </div>
+        <div class="container-fluid">
+            <div class="row">
+                <p class="col-auto m-auto"><a href='about.html'>About</a></p>
+                <p class="col-auto m-auto"><a href="mailto:groovespace@groove.uw.edu"><span class="material-icons">email</span>groovespace@groove.uw.edu</a></p>
+                <p class="col-auto m-auto"><a href="tel:123-456-7890"><span class="material-icons">phone</span>123-456-7890</a></p>
+                <p class="col-auto m-auto">&copy; INFO 340 Group A10 2022</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
