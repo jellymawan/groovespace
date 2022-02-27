@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import App from './App';
+import App from './components/App';
 import musicData from './data/music-data.json';
+import {BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
-    <App songs={musicData}/>,  document.getElementById('root')
+    <BrowserRouter>
+        <App songs={musicData}/>
+    </BrowserRouter>,  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -6,7 +6,7 @@
         "description":"Hardcore electric guitar.",
         "release_date": "12/31/2021",
         "duration":"2:45",
-        "cover": "../imgs/cover/Future Shock.jpeg",
+        "cover": "imgs/cover/Future Shock.jpeg",
         "audio":"audio/future-shock.mp3",
         "likes": 30,
         "duets": 3
