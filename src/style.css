@@ -29,7 +29,7 @@ main {
     text-align: center;
 }
 
-header, footer, .about{
+header, footer{
     background-color: black;
 }
 
@@ -171,5 +171,5 @@ a{
     }
 }
 audio{
-    width: 100%;
+    width: 50rem;
 }

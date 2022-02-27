@@ -1,7 +1,3 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-
-
 /**
  * 
  * @param {*} props 
@@ -14,7 +10,7 @@ export default function HeaderNav(props) {
         <button className="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <Link className="navbar-brand nav-color" to="/home">groovespace</Link>
+        <a className="navbar-brand nav-color" href="#">groovespace</a>
         <div className="collapse navbar-collapse">
           <NavLinks />
           <Form />
@@ -30,10 +26,9 @@ export default function HeaderNav(props) {
  * @returns 
  */
 export function Form(props) {
-
   return (
     <form className="d-flex m-auto">
-      <label hidden htmlFor="search">Search</label>
+      <label hidden for="search">Search</label>
       <input className="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist" id="search" />
       <button className="btn btn-outline-secondary" type="submit">SEARCH</button>
     </form>
@@ -46,11 +41,10 @@ export function Form(props) {
  * @returns 
  */
 export function NavLinks(props) {
-
   return (
     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
       <li className="nav-item active">
-        <a className="nav-link" href="#">BROWSE <span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="#">BROWSE <span class="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">UPLOAD</a>
