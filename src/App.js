@@ -9,8 +9,6 @@ import {Link, Routes, Route, Outlet} from 'react-router-dom';
 
 
 function App(props) {
-  console.log("hello world");
-
   return (
     <div>
       <HeaderNav />
@@ -29,18 +27,6 @@ function App(props) {
       </div>
     </div>
   );
-}
-
-
-function PageLayout(){
-
-  return(
-    <div>
-      <HeaderNav/>
-      <Outlet />
-      <Static.Footer/>
-    </div>
-  )
 }
 
 

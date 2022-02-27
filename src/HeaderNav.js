@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-
+import {Navbar, Nav, Container, NavDropdown, Button} from 'react-bootstrap';
 /**
  * 
  * @param {*} props 
@@ -8,16 +8,18 @@ import {Link} from 'react-router-dom';
 export default function HeaderNav(props) {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <button className="navbar-toggler m-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <Link className="navbar-brand nav-color" to="/home">groovespace</Link>
-        <div className="collapse navbar-collapse">
-          <NavLinks />
-          <Form />
-        </div>
-      </nav>
+      <Navbar bg="light" expand="lg">
+        <Container fluid>
+          <Link className="navbar-brand nav-color" to="/home">groovespace</Link>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <NavLinks />
+            </Nav>
+            <Form />
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </header>
   )
 }
@@ -46,13 +48,13 @@ export function NavLinks(props) {
   return (
     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
       <li className="nav-item active">
-        <a className="nav-link" href="#">BROWSE <span className="sr-only">(current)</span></a>
+        <Link className="nav-link" to="#">BROWSE <span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">UPLOAD</a>
+        <Link className="nav-link" to="#">UPLOAD</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">SIGN IN</a>
+        <Link className="nav-link" to="#">SIGN IN</Link>
       </li>
     </ul>
   );

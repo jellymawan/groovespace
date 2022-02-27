@@ -1,4 +1,7 @@
 import {Link} from 'react-router-dom';
+import ReactAudioPlayer from 'react-audio-player';
+
+
 
 //takes in songs prop that is an array of song data, from CardList
 export function MusicCard(props) {
@@ -12,14 +15,11 @@ export function MusicCard(props) {
               <p className="card-subtitle mb-2 text-muted">{"Artist: " + props.song.artist}</p>
               <img src={props.song.cover} className="card-img-top" alt={props.song.title} />
               <p className="card-text">{props.song.description}</p>
-              {/* <a href="#" className="btn btn-dark">Listen</a>
-              <a href="#" className="btn btn-dark">Add On</a> */}
+
             </div>
           </div>
         </Link>
-        <audio controls> 
-          <source src={props.song.audio} type="audio/mpeg"/>
-        </audio>
+        <ReactAudioPlayer src={props.song.audio} controls/>
       </div>
     </div>
   )
