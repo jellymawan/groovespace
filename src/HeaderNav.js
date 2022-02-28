@@ -1,5 +1,8 @@
-import {Link} from 'react-router-dom';
-import {Navbar, Nav, Container, NavDropdown, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
+import { useState } from 'react';
+import Data from './data/music-data.json';
+
 /**
  * 
  * @param {*} props 
@@ -16,7 +19,7 @@ export default function HeaderNav(props) {
             <Nav>
               <NavLinks />
             </Nav>
-            <Form />
+            <Search />
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -26,26 +29,7 @@ export default function HeaderNav(props) {
   )
 }
 
-/**
- * Will work on implementing a search feature in this function
- * @param {*} props 
- * @returns 
- */
-export function Form(props) {
-  return (
-    <form className="d-flex m-auto">
-      <label hidden htmlFor="search">Search</label>
-      <input className="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist" id="search" />
-      <button className="btn btn-outline-secondary" type="submit">SEARCH</button>
-    </form>
-  );
-}
-
-/**
- * Still need to work on this function
- * @param {*} props 
- * @returns 
- */
+// component for navlinks
 export function NavLinks(props) {
   return (
     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -60,4 +44,40 @@ export function NavLinks(props) {
       </li>
     </ul>
   );
+}
+
+/**
+ * Incomplete
+ * @param {*} props 
+ * @returns 
+ */
+export function Search(props) {
+  const [query, setQuery] = useState("");
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+  let filteredArr = Data.filter((song) => {
+    if (query === "") {
+      return song;
+    } else if (query === song.title.toLowerCase().includes(query.toLowerCase()) || 
+    query === song.artist.toLowerCase().includes(query.toLowerCase())) {
+      console.log(song.title);
+      return song;
+    }
+  });
+  return (
+    <form className="d-flex m-auto" onSubmit={handleSubmit}>
+      <label hidden htmlFor="search">Search</label>
+      <input className="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist" id="search" onChange={event => setQuery(event.target.value)} />
+      <button className="btn btn-outline-secondary" type="submit" onClick={HandleSearch(filteredArr)}>SEARCH</button>
+    </form>
+  );
+}
+
+/**
+ * Incomplete
+ * @param {*} filteredArr 
+ */
+function HandleSearch(filteredArr) {
+  console.log(filteredArr);
 }
