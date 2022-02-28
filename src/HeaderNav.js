@@ -10,7 +10,7 @@ export default function HeaderNav(props) {
     <header>
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Link className="navbar-brand nav-color" to="/home">groovespace</Link>
+          <Link className="navbar-brand nav-color" to="/songs">groovespace</Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
@@ -20,6 +20,8 @@ export default function HeaderNav(props) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <p className="alert alert-danger">Some functionality not working: Accessing the 'BROWSE', 'UPLOAD', 'SIGN IN' tabs will not lead to anywhere; Buttons to like and add on to music is not implemented yet</p>
+      {/* will delete above line for final project */}
     </header>
   )
 }
