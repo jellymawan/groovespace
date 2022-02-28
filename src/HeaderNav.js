@@ -48,13 +48,13 @@ export function NavLinks(props) {
   return (
     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
       <li className="nav-item active">
-        <Link className="nav-link" to="#">BROWSE <span className="sr-only">(current)</span></Link>
+        <Nav.Link href="#">BROWSE</Nav.Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="#">UPLOAD</Link>
+        <Nav.Link href="#">UPLOAD</Nav.Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="#">SIGN IN</Link>
+        <Nav.Link href="#">SIGN IN</Nav.Link>
       </li>
     </ul>
   );

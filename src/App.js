@@ -4,7 +4,7 @@ import {CardList} from './CardList.js';
 import HeaderNav from './HeaderNav';
 import MusicPage from './MusicPage';
 import {MusicDetail} from './MusicDetail';
-import {Link, Routes, Route, Outlet} from 'react-router-dom';
+import {Link, Routes, Route} from 'react-router-dom';
 
 
 

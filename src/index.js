@@ -4,6 +4,8 @@ import './style.css';
 import App from './App';
 import musicData from './data/music-data.json';
 import {BrowserRouter} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.render(
     <BrowserRouter>
