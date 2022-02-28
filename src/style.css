@@ -141,12 +141,6 @@
         display: none;
     }
   
-    .card {
-        display: flex;
-        flex-wrap: nowrap;
-        width: 250px;
-        height: 500px;
-    }
   
     .card-body {
         display: flex;

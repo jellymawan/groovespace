@@ -27,6 +27,6 @@ function App(props) {
      </div>
    </div>
  );
-}
- 
+} 
+
 export default App;
