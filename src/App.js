@@ -14,9 +14,10 @@ function App(props) {
      <HeaderNav />
      <div>
        <Routes>
-           <Route path="/home" element={<MusicPage />}>
+          <Route path="/" element={<CardList songs={props.songs}/>}/>
+           <Route path="/songs" element={<MusicPage />}>
              <Route path=":songID" element={<MusicDetail songs={props.songs}/>} />
-             <Route index="/home" element={<CardList songs={props.songs}/>} />
+             <Route index="/songs" element={<CardList songs={props.songs}/>} />
            </Route>
            <Route path="/about" element={<Static.AboutPage />}/>
            <Route path="*" element={<Static.ErrorPage />} />
