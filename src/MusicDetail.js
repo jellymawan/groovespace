@@ -1,7 +1,10 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player'; //plays music
-import MUSIC from './data/music-data.json';
+import {FcLike} from 'react-icons/fc';
+import {MdGroupAdd} from 'react-icons/md';
+import {useState} from 'react';
+import {IconButton} from '@mui/material';
 
 
 export function MusicDetail(props){
@@ -32,8 +35,8 @@ export function MusicDetail(props){
                         <p className="description">Description: {song.description}</p>
                         <p className="duration">Duration: {song.duration}</p>
 
-                        <p className="likes"><i className="material-icons like-icon" aria-label="likes" title="Number of likes">favorite</i>{song.likes}</p>
-                        <p className="duets"><i className="material-icons duet-icon" aria-label="duets" title="Number of duets">interpreter_mode</i>{song.duets}</p>
+                        {/* {<Likes numLikes={song}/>} to be finished for later tonight.
+                        {<Duets numDuets={song}/>} */}
 
                         <ReactAudioPlayer src={song.audio} controls/>
 
@@ -43,4 +46,38 @@ export function MusicDetail(props){
             </div>
         </main>
     );
+}
+
+function Likes(props){
+    let numLikes = props.numLikes.likes;
+    const [likes, setLikes] = useState(numLikes);
+
+    const handleLike = (event) => {
+        setLikes(likes => likes + 1);
+    }
+    return(
+        <div className="icon">
+        <IconButton onClick={handleLike}>
+            <p className="likes"><FcLike className="material-icons like-icon"/></p>
+        </IconButton>
+        {likes}
+        </div>
+    )
+}
+
+function Duets(props){
+    let numDuets = props.numDuets.duets;
+    const [duets, setDuets] = useState(numDuets);
+
+    const handleLike = (event) => {
+        setDuets(duets => duets + 1);
+    }
+    return(
+        <div className="icon">
+        <IconButton onClick={handleLike}>
+            <p className="duets"><MdGroupAdd className="material-icons duet-icon"/></p>
+        </IconButton>
+        {duets}
+        </div>
+    )
 }
