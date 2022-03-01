@@ -35,8 +35,8 @@ export function MusicDetail(props){
                         <p className="description">Description: {song.description}</p>
                         <p className="duration">Duration: {song.duration}</p>
 
-                        {/* {<Likes numLikes={song}/>} to be finished for later tonight.
-                        {<Duets numDuets={song}/>} */}
+                        {<Likes numLikes={song}/>} 
+                        {<Duets numDuets={song}/>}
 
                         <ReactAudioPlayer src={song.audio} controls/>
 
