@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export function Footer(){
     return (
-        <div className="container-fluid">
+        <div className="container-fluid footer">
             <footer>
                 <div className="row">
                     <p className="col-auto m-auto"><Link to='/about'>About</Link></p>

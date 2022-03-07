@@ -8,7 +8,7 @@ export function MusicCard(props) {
   return (
     <div className="col">
       <div className="card">
-        <Link to={"/songs/"+props.song.id}>
+        <Link to={"/songs/"+props.song.id} className="link">
           <div className="card">
             <div className="card-body">
               <p className="card-title">{props.song.title}</p>

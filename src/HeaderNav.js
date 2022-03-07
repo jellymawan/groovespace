@@ -25,8 +25,6 @@ export default function HeaderNav(props) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <p className="alert alert-danger">Some functionality not working: Accessing the 'BROWSE', 'UPLOAD', 'SIGN IN' tabs will not lead to anywhere; Buttons to like and add on to music is not implemented yet</p>
-      {/* will delete above line for final project */}
     </header>
   )
 }
@@ -36,7 +34,7 @@ export function NavLinks(props) {
   return (
     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
       <li className="nav-item active">
-        <Nav.Link href="#">BROWSE</Nav.Link>
+        <Nav.Link href="/browse">BROWSE</Nav.Link>
       </li>
       <li className="nav-item">
         <Nav.Link href="#">UPLOAD</Nav.Link>

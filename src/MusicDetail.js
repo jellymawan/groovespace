@@ -15,7 +15,7 @@ export function MusicDetail(props){
 
     //loops through data to get the song that matches the ID
     for(let i=0; i<props.songs.length; i++){
-        if(props.songs[i].id === ID){
+        if(props.songs[i].id+"" === ID){
             song = props.songs[i];
         }
     }
