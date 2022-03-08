@@ -42,7 +42,7 @@ main {
    text-align: center;
 }
 
-footer, .browse-card.container-fluid, .main-browse, .container-fluid.footer{
+footer, .card.browse-card, .main-browse, .container-fluid.footer{
    background-color: black;
 }
 
@@ -56,9 +56,7 @@ footer p, footer p a, .col {
    padding-right: 0;
 }
 
-.material-icons {
-   display: none;
-}
+
 
 .container {
    padding-top: 1.5rem;
@@ -123,8 +121,13 @@ a {
    display: flex;
    justify-content: center;
 }
-
-
+.list{
+   flex-direction: row;
+}
+.list.col {
+    padding-top: 2rem;
+    padding-bottom: 0;
+}
 /* Browse Component */
 .img-list{
    height: 100px;
@@ -135,9 +138,6 @@ a {
 .browse-info, a.link{
    color: black;
    text-decoration: none;
-}
-audio{
-   display: none;
 }
 div.browse-img-div{
    justify-content: center;
@@ -169,10 +169,8 @@ div.browse-img-div{
    text-align: right;
 }
 
-@media(min-width: 768px) {
 
-}
-
+/* Screen sizes for 768px and above */
 @media(min-width: 768px) {
    .row {
       flex-direction: row;
@@ -197,7 +195,6 @@ div.browse-img-div{
       color: black;
       text-decoration: none;
    }
-
    form, audio {
       width: 100%;
    }
@@ -214,7 +211,6 @@ div.browse-img-div{
       position: relative;
       top: 5px;
       right: 8px;
-      display: inline;
       padding-left: .4rem;
       font-size: 2rem;
    }
@@ -247,25 +243,31 @@ div.browse-img-div{
 
    /* Big display: Browse.js */
    .img-list{
-
-      width: 85%;
-      height: 85%;
+      width: 100%;
+      height: 100%;
       border-radius: 5%;
-      border: 3px solid black;
+      border: 2px solid black;
+      margin-top: 1rem;
    }
    .list{
       display: flex;
       align-items: center;
-      margin-left: 30px;
-      height: 300px;
+      flex-direction: column;
    }
-   .main-browse, .align-items-center{
+   .main-browse, .align-items-center, .card.browse-card{
       background-color: white;
-      padding-right: 15rem;
-      padding-left: 15rem;
+
    }
-   .browse-card.container-fluid{
-      background-color: white;
+   .main-browse{
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .card.browse-card{
+      flex-direction: column;
+   }
+   .card.browse-card{
+      height: 20rem;
    }
    .link{
       text-decoration: none;
@@ -277,29 +279,75 @@ div.browse-img-div{
    .col-6.sort-input{
       width: 20%
    }
-   .browse-card, audio{
+   .browse-card{
       display: inline;
    }
    .browse-info .text-light{
       color: black !important;
       margin: auto;
    }
-   div.browse-img-div{
-      margin: 0;
-   }
+
    .col-8.browse-info{
-      width: 72%;
+      width: 70%;
+      padding-top: 10%;
+      text-align: center;
    }
    .browse-title{
-      font-size: 2.5em;
+      font-size: 2.5vw;
    }
    .browse-artist{
-      font-size: 2em;
+      font-size: 2vw;
    }
    .browse-release, .browse-desc, .sort-by{
-      font-size: 1.5em;
+      font-size: 1.5vw;
+   }
+   .text-light{
+      margin-left: 0;
+      word-wrap: break-word;
+   }
+   .row.med-row{
+      flex-wrap: wrap;
+      padding-left: 15%;
+   }
+   .browse-img-div{
+      height: 10rem;
+      width: 10rem;
+   }
+   .align-items-center{
+      padding-left: 15%;
    }
 
+   @media(min-width: 992px) {
+      .list.col{
+         flex-direction: row;
+         padding-bottom: 0;
+         margin-left: 0;
+         padding-top: 9%;
+      }
+
+      .img-list{
+         width: 80%;
+         margin: 0;
+      }
+      .browse-img-div{
+         margin: auto;
+         height: 80%;
+         width: 80%;
+      }
+      .main-browse{
+         padding-right: 10%;
+         padding-left: 10%;
+      }
+      .col-8.browse-info{
+         width: 72%;
+         text-align: left;
+         padding-top: 0;
+      }
+
+      .card.browse-card{
+         width: 80%;
+      }
+   }
 
 }
 

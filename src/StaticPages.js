@@ -7,8 +7,8 @@ export function Footer(){
             <footer>
                 <div className="row">
                     <p className="col-auto m-auto"><Link to='/about'>About</Link></p>
-                    <p className="col-auto m-auto"><a href="mailto:groovespace@groove.uw.edu"><span className="material-icons">email</span>groovespace@groove.uw.edu</a></p>
-                    <p className="col-auto m-auto"><a href="tel:123-456-7890"><span className="material-icons">phone</span>123-456-7890</a></p>
+                    <p className="col-auto m-auto"><a href="mailto:groovespace@groove.uw.edu"><span className="material-icons d-sm-none d-md-inline">email</span>groovespace@groove.uw.edu</a></p>
+                    <p className="col-auto m-auto"><a href="tel:123-456-7890"><span className="material-icons d-sm-none d-md-inline">phone</span>123-456-7890</a></p>
                     <p className="col-auto m-auto">&copy; INFO 340 Group A10 2022</p>
                 </div>
             </footer>
