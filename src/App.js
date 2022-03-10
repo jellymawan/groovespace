@@ -12,9 +12,11 @@ import { getAuth } from 'firebase/auth';
 
 
 
+
 const [user, loading, error] = useAuthState(getAuth());
 
 const currentUser = user;
+
 
 function App(props) {
   return (

@@ -5,6 +5,13 @@ import App from './App';
 import musicData from './data/music-data.json';
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { initializeApp } from 'firebase/app';
+
+
+const firebaseConfig = {
+    //Need the console stuff here
+}
+const app = initializeApp(firebaseConfig);
 
 
 ReactDOM.render(
