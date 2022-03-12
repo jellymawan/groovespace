@@ -4,6 +4,7 @@ import { CardList } from './CardList.js';
 import HeaderNav from './HeaderNav';
 import MusicPage from './MusicPage';
 import { MusicDetail } from './MusicDetail';
+import { SignInPage } from './SignInPage';
 import { Link, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import { Browse } from './Browse';
 import { MdOpenInNewOff, MdSettingsInputComponent } from 'react-icons/md';
@@ -12,13 +13,10 @@ import { getAuth } from 'firebase/auth';
 
 
 
-
-const [user, loading, error] = useAuthState(getAuth());
-
-const currentUser = user;
-
-
 function App(props) {
+  const [user, loading, error] = useAuthState(getAuth());
+
+  const currentUser = user;
   return (
     <div>
       <HeaderNav />

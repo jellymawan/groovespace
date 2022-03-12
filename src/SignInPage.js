@@ -16,7 +16,7 @@ const FIREBASEUI_CONFIG = {
     }
 };
 
-export function SignIn(props) {
+export function SignInPage(props) {
     return (
         !props.user &&
             <StyledFirebaseAuth uiConfig={FIREBASEUI_CONFIG} firebaseAuth={auth} />
