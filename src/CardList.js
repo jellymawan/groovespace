@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player';
-import {PlayAudio} from './PlayAudio';
+import {AudioPlayer} from './AudioPlayer'
 
 
 
@@ -22,7 +22,7 @@ export function MusicCard(props) {
             </div>
           </div>
         </Link>
-        <PlayAudio songsArr={songsArr} songid={props.song.id}/>
+        <AudioPlayer songsArr={songsArr} songid={props.song.id}/>
 
       </div>
     </div>

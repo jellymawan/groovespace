@@ -2,13 +2,13 @@ import React, {useState, useEffect, useRef} from 'react';
 import {AudioControls} from './AudioControls';
 
 
-export function PlayAudio(props){
+export function AudioPlayer(props){
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
     const [duetProgress, setDuetProgress] = useState(0);
     const [durr, setDurr] = useState(0);
 
-    const song_arr = FindSongs(props.songsArr, props.songid);
+    const song_arr = findSongs(props.songsArr, props.songid);
 
     let duetObj = ';'
     let isDuet = true;
@@ -147,7 +147,7 @@ export function PlayAudio(props){
 }
 
 
-function FindSongs(songList, currSong){
+function findSongs(songList, currSong){
     let songArr = [];
 
     currSong = songList.filter((song) => {

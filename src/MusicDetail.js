@@ -5,7 +5,7 @@ import {FcLike} from 'react-icons/fc';
 import {MdGroupAdd} from 'react-icons/md';
 import {useState} from 'react';
 import {IconButton} from '@mui/material';
-import {PlayAudio} from './PlayAudio';
+import {AudioPlayer} from './AudioPlayer'
 
 
 
@@ -46,7 +46,7 @@ export function MusicDetail(props){
                         {<Likes numLikes={song}/>} 
                         {<Duets numDuets={song}/>}
                         <div className="row">
-                            <PlayAudio songsArr={songsArr} songid={song.id}/>
+                            <AudioPlayer songsArr={songsArr} songid={song.id}/>
 
                         </div>
 

@@ -3,7 +3,7 @@ import {useParams, Navigate} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player'; //plays music
 import {Link, useNavigate} from 'react-router-dom';
 import _ from 'lodash';
-import {PlayAudio} from './PlayAudio'
+import {AudioPlayer} from './AudioPlayer'
 
 export function Browse(props){
     const songsArr = props.songs;
@@ -76,7 +76,7 @@ function MusicList({songsArr, song}){
                         </div>
                     </div>
                </Link>     
-               <PlayAudio songsArr={songsArr} songid={song.id}/>
+               <AudioPlayer songsArr={songsArr} songid={song.id}/>
 
         </div>
 
