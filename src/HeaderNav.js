@@ -40,7 +40,7 @@ export function NavLinks(props) {
         <Nav.Link href="#">UPLOAD</Nav.Link>
       </li>
       <li className="nav-item">
-        <Nav.Link href="#">SIGN IN</Nav.Link>
+        <Nav.Link href="/signin">SIGN IN</Nav.Link>
       </li>
     </ul>
   );

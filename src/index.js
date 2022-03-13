@@ -5,6 +5,23 @@ import App from './App';
 import musicData from './data/music-data.json';
 import {BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { initializeApp } from "firebase/app";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCPsDEVHv496GFVL5BF6pyUuiF0l9Dx5SU",
+  authDomain: "project-eyoo30.firebaseapp.com",
+  projectId: "project-eyoo30",
+  storageBucket: "project-eyoo30.appspot.com",
+  messagingSenderId: "652977828009",
+  appId: "1:652977828009:web:2768bcc5322ace68acf9b8"
+};
+
+// initialize firebase
+const app = initializeApp(firebaseConfig);
 
 
 ReactDOM.render(

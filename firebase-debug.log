@@ -1,0 +1,43 @@
+[debug] [2022-03-01T00:31:58.144Z] ----------------------------------------------------------------------
+[debug] [2022-03-01T00:31:58.147Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Benson Luu\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2022-03-01T00:31:58.148Z] CLI Version:   10.2.1
+[debug] [2022-03-01T00:31:58.148Z] Platform:      win32
+[debug] [2022-03-01T00:31:58.148Z] Node Version:  v17.3.0
+[debug] [2022-03-01T00:31:58.150Z] Time:          Mon Feb 28 2022 16:31:58 GMT-0800 (Pacific Standard Time)
+[debug] [2022-03-01T00:31:58.150Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-01T00:31:58.164Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-01T00:31:58.165Z] > authorizing via signed-in user (benluu@uw.edu)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Benson Luu\desktop\project-eyoo30
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2022-03-01T00:40:44.704Z] Error: C:\Users\Benson Luu\desktop\project-eyoo30\C:\Users\Benson Luu\Desktop\project-eyoo30\public contains invalid WIN32 path characters.
+    at Object.mkdirsSync (C:\Users\Benson Luu\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\mkdirs\mkdirs-sync.js:18:22)
+    at Object.createFileSync (C:\Users\Benson Luu\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\ensure\file.js:40:11)
+    at Config.writeProjectFile (C:\Users\Benson Luu\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:144:12)
+    at C:\Users\Benson Luu\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:162:22
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: An unexpected error has occurred.
