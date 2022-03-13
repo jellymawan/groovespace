@@ -1,26 +1,31 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player'; //plays music
 import {FcLike} from 'react-icons/fc';
 import {MdGroupAdd} from 'react-icons/md';
 import {useState} from 'react';
 import {IconButton} from '@mui/material';
+import {PlayAudio} from './PlayAudio';
+
 
 
 export function MusicDetail(props){
+
+    const songsArr = props.songs;
 
     const ID = useParams().songID;
 
     let song = {};
 
     //loops through data to get the song that matches the ID
-    for(let i=0; i<props.songs.length; i++){
-        if(props.songs[i].id+"" === ID){
-            song = props.songs[i];
+    for(let i=0; i<songsArr.length; i++){
+        if(songsArr[i].id+"" === ID){
+            song = songsArr[i];
         }
     }
-
     
+    const is_duet = song.duet_from != 0
+
     return(
         <main>
             <div className="container-fluid">
@@ -33,12 +38,17 @@ export function MusicDetail(props){
                         <h2>{song.artist}</h2>
                         <p className="release-date">Release Date: {song.release_date}</p>
                         <p className="description">Description: {song.description}</p>
-                        <p className="duration">Duration: {song.duration}</p>
+
+                        {is_duet ? 
+                            (<p className="duet-from">Duetted from: {<GetDuet currSong={song} songsArr={songsArr}/>}</p>)
+                            : (<p></p>)}
 
                         {<Likes numLikes={song}/>} 
                         {<Duets numDuets={song}/>}
+                        <div className="row">
+                            <PlayAudio songsArr={songsArr} songid={song.id}/>
 
-                        <ReactAudioPlayer src={song.audio} controls/>
+                        </div>
 
                         <p><a href="#" className="btn btn-dark lg disabled" aria-label="click to add on">Add On</a></p>
                     </div>
@@ -54,30 +64,39 @@ function Likes(props){
 
     const handleLike = (event) => {
         setLikes(likes => likes + 1);
-    }
+    };
     return(
         <div className="icon">
-        <IconButton onClick={handleLike}>
+        <IconButton onClick={handleLike} className="likes">
             <p className="likes"><FcLike className="material-icons like-icon"/></p>
         </IconButton>
         {likes}
         </div>
-    )
+    );
 }
 
 function Duets(props){
     let numDuets = props.numDuets.duets;
     const [duets, setDuets] = useState(numDuets);
 
-    const handleLike = (event) => {
-        setDuets(duets => duets + 1);
-    }
     return(
         <div className="icon">
-        <IconButton onClick={handleLike}>
-            <p className="duets"><MdGroupAdd className="material-icons duet-icon"/></p>
-        </IconButton>
-        {duets}
+            <MdGroupAdd className="material-icons duet-icon"/>
+            {duets}
         </div>
+    );
+}
+
+function GetDuet({currSong, songsArr}){
+
+    const duet_song = songsArr.filter((song) => {
+        return currSong.duet_from === song.id;
+    })
+
+    return(
+        <Link to={"/songs/"+duet_song[0].id} className="duet-from-link">
+            {duet_song[0].title}
+        </Link>
     )
+
 }

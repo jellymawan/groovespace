@@ -3,14 +3,16 @@ import {useParams, Navigate} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player'; //plays music
 import {Link, useNavigate} from 'react-router-dom';
 import _ from 'lodash';
+import {PlayAudio} from './PlayAudio'
 
 export function Browse(props){
+    const songsArr = props.songs;
     const [sortBy, setSortBy] = useState("relevance");
-    const [displayedData, setDisplayedData] = useState(props.songs);
+    const [displayedData, setDisplayedData] = useState(songsArr);
 
 
     let MusicListArray = displayedData.map((song) => {
-        let newMusicItem = <MusicList song={song} key={song.id}/>
+        let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id}/>
         return newMusicItem;
     })
 
@@ -20,9 +22,9 @@ export function Browse(props){
 
     const handleClick = () => {
         if(sortBy == 'id'){
-            setDisplayedData(_.sortBy(props.songs, sortBy));
+            setDisplayedData(_.sortBy(songsArr, sortBy));
         }else{
-            setDisplayedData(_.orderBy(props.songs, sortBy, 'desc'));
+            setDisplayedData(_.orderBy(songsArr, sortBy, 'desc'));
         }
     }
 
@@ -56,27 +58,26 @@ export function Browse(props){
 
 }
 
-function MusicList(props){
+function MusicList({songsArr, song}){
+    
     return (
 
         <div className="card browse-card col-md-5">     
-                <Link to={"/songs/"+props.song.id} className="link">
-      
+                <Link to={"/songs/"+song.id} className="link">
                     <div className="list col">
                         <div className="browse-img-div">
-                            <img src={props.song.cover} className="img-list align-self-center"alt={props.song.cover} />
+                            <img src={song.cover} className="img-list align-self-center"alt={song.cover} />
                         </div>
                         <div className="col-8 browse-info">
-                            <h1 className="browse-title text-light card-title">{props.song.title}</h1>
-                            <h2 className="browse-artist text-light card-subtitle">{props.song.artist}</h2>
-                            <h3 className="browse-release text-light">{props.song.release_date}</h3>
-                            <h4 className="browse-desc text-light card-text">{props.song.description}</h4>
-                            <ReactAudioPlayer className="d-none d-lg-inline" src={props.song.audio} controls/>
-
+                            <h1 className="browse-title text-light card-title">{song.title}</h1>
+                            <h2 className="browse-artist text-light card-subtitle">{song.artist}</h2>
+                            <h3 className="browse-release text-light">{song.release_date}</h3>
+                            <h4 className="browse-desc text-light card-text">{song.description}</h4>
                         </div>
                     </div>
-                    
                </Link>     
+               <PlayAudio songsArr={songsArr} songid={song.id}/>
+
         </div>
 
     )

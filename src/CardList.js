@@ -1,12 +1,15 @@
 import {Link} from 'react-router-dom';
 import ReactAudioPlayer from 'react-audio-player';
+import {PlayAudio} from './PlayAudio';
 
 
 
 //takes in songs prop that is an array of song data, from CardList
 export function MusicCard(props) {
+
+  const songsArr = props.songsArr;
   return (
-    <div className="col">
+    <div className="col home">
       <div className="card">
         <Link to={"/songs/"+props.song.id} className="link">
           <div className="card">
@@ -19,7 +22,8 @@ export function MusicCard(props) {
             </div>
           </div>
         </Link>
-        <ReactAudioPlayer src={props.song.audio} controls/>
+        <PlayAudio songsArr={songsArr} songid={props.song.id}/>
+
       </div>
     </div>
   )
@@ -28,8 +32,11 @@ export function MusicCard(props) {
 
 //takes in songs prop that is an array of song data, to pass to MusicCard
 export function CardList(props) {
+
+  const songsArr = props.songs;
+
   const musicCardArray = props.songs.map((song) => {
-    let newMusicCard = <MusicCard key={song.title} song={song} />;
+    let newMusicCard = <MusicCard  songsArr={songsArr} key={song.title} song={song} />;
     return newMusicCard;
   });
 
