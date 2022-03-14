@@ -75,7 +75,7 @@ function MusicList({songsArr, song}){
                         </div>
                     </div>
                </Link>     
-               <AudioPlayer songsArr={songsArr} songid={song.id}/>
+               {/* <AudioPlayer songsArr={songsArr} songid={song.id}/> */}
 
         </div>
 

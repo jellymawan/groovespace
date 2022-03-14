@@ -9,13 +9,37 @@ export function AudioPlayer(props){
     const [durr, setDurr] = useState(0);
     const [isDuet, setIsDuet] = useState(true);
 
-    const song_arr = FindSongs(props.songsArr, props.songid);
+    const song_arr = findSongs(props.songsArr, props.songid);
+
+    function findSongs(songList, currSong){
+        let songArr = [];
+    
+        currSong = songList.filter((song) => {
+            return currSong === song.id
+        });
+    
+        songArr.push(currSong[0]); //pushes current song
+        let duet_id = currSong[0].duet_from;
+    
+    
+        while(duet_id != 0){ //while there involves a duet
+            currSong = songList.filter((song) => {
+                return currSong[0].duet_from === song.id;//find the song associated with duet
+            });
+    
+            console.log(currSong);
+            duet_id = currSong[0].duet_from;
+            songArr.push(currSong[0]); //pushes all other duetted songs
+    
+        }
+        return songArr;
+    }
 
     const songsRef = useRef([]);
     const intervalRef = useRef();
     
 
-    const calculateTime = (secs) => {
+    const calculateTime = (secs) => { //function taken from https://www.youtube.com/watch?v=sqpg1qzJCGQ&t=2540s
         const minutes = Math.floor(secs/60);
         const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
         const seconds = Math.floor(secs % 60);
@@ -23,7 +47,7 @@ export function AudioPlayer(props){
         return `${returnMinutes} : ${returnSeconds}`
     }
 
-    useEffect(() => {
+    useEffect(() => { 
         const songs = song_arr.map((song) => {
             return new Audio(song.audio)
         })
@@ -35,30 +59,21 @@ export function AudioPlayer(props){
         });
     }, [props.songid]);
 
-    useEffect(() => {
+    useEffect(() => { //some code taken from https://letsbuildui.dev/articles/building-an-audio-player-with-react-hooks
         if(isPlaying){
-            console.log(songsRef.current[0].currentTime);
-            songsRef.current[0].play();
             startTimer();
-            if(isDuet){
-                for(let i = 1; i < songsRef.current.length; i++){
-                    songsRef.current[i].play()
-                }
+            for(let i = 0; i < songsRef.current.length; i++){
+                songsRef.current[i].play()
             }
         }else{
-            console.log(songsRef.current[0].currentTime);
             clearInterval(intervalRef.current);
-            songsRef.current[0].pause();
-            if(isDuet){
-                for(let i = 1; i < songsRef.current.length; i++){
-                    songsRef.current[i].pause()
-                }
+            for(let i = 0; i < songsRef.current.length; i++){
+                songsRef.current[i].pause()
             }
         }
 
         function cleanup() {
-            songsRef.current[0].pause();
-            for(let i = 1; i < songsRef.current.length; i++){
+            for(let i = 0; i < songsRef.current.length; i++){
                 songsRef.current[i].pause()
             }
         }
@@ -139,24 +154,3 @@ export function AudioPlayer(props){
 }
 
 
-function FindSongs(songList, currSong){
-    let songArr = [];
-
-    currSong = songList.filter((song) => {
-        return currSong === song.id
-    });
-
-    songArr.push(currSong[0]); //pushes current song
-    let duet_id = currSong[0].duet_from;
-
-    while(duet_id != 0){
-        currSong = songList.filter((song) => {
-            return currSong[0].duet_from === song.id
-        });
-
-        duet_id = currSong[0].duet_from;
-        songArr.push(currSong[0]); //pushes all other duetted songs
-
-    }
-    return songArr;
-}

@@ -1,12 +1,16 @@
 import {Link} from 'react-router-dom';
 import {AudioPlayer} from './AudioPlayer';
+import _ from 'lodash';
 
 
 
 //takes in songs prop that is an array of song data, from CardList
 export function MusicCard(props) {
 
+
   const songsArr = props.songsArr;
+
+
   return (
     <div className="col home">
       <div className="card">
@@ -21,7 +25,7 @@ export function MusicCard(props) {
             </div>
           </div>
         </Link>
-        <AudioPlayer songsArr={songsArr} songid={props.song.id}/>
+        {/* <AudioPlayer songsArr={songsArr} songid={props.song.id}/> */}
 
       </div>
     </div>
@@ -32,9 +36,12 @@ export function MusicCard(props) {
 //takes in songs prop that is an array of song data, to pass to MusicCard
 export function CardList(props) {
 
-  const songsArr = props.songs;
+  let songsArr = props.songs;
+  songsArr = _.orderBy(songsArr, "likes", 'desc')
+  songsArr = songsArr.slice(0,10); //top 10 most popular songs displayed in home page
 
-  const musicCardArray = props.songs.map((song) => {
+
+  const musicCardArray = songsArr.map((song) => {
     let newMusicCard = <MusicCard  songsArr={songsArr} key={song.title} song={song} />;
     return newMusicCard;
   });
@@ -44,7 +51,7 @@ export function CardList(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col">
-            <span id="music">Music</span>
+            <span id="music">Click to listen to our most popular songs!</span>
           </div>
         </div>
         <div className="row" id="card-row">

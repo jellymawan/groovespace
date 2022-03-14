@@ -21,5 +21,6 @@ export function SignInPage(props) {
     return (
         !props.user &&
             <StyledFirebaseAuth uiConfig={FIREBASEUI_CONFIG} firebaseAuth={auth} />
+
     )
 }
