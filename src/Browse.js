@@ -3,6 +3,7 @@ import {useParams, Navigate} from 'react-router-dom';
 import {Link, useNavigate} from 'react-router-dom';
 import _ from 'lodash';
 import {AudioPlayer} from './AudioPlayer';
+import {Search} from './HeaderNav';
 
 export function Browse(props){
     const songsArr = props.songs;
