@@ -28,8 +28,8 @@ export function MusicDetail(props){
     return(
         <main>
             <div className="container-fluid">
-                <div className="row">
-                    <div className="col">
+                <div className="col music-detail-page">
+                    <div className="col music-detail-img">
                         <img src={song.cover} className="card-img-top img-size" alt={song.title} />
                     </div>
                     <div className="col">

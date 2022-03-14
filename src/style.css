@@ -9,8 +9,6 @@ body, html {
    height: 100%;
    padding: 0;
 }
-
-  
 main {
    display: flex;
    padding: 2rem;
@@ -25,13 +23,14 @@ main {
 }
 
 /* navbar and footer styling */
-.navbar-brand {
+a.navbar-brand {
    padding-left: 2rem;
    color:white;
    font-size: 1.75rem;
    position: relative;
    top: 1.5rem;
    font-size: 2.5rem;
+   margin-bottom: 2rem;
 }
 
 .navbar-dark a.navbar-brand, .navbar-dark .navbar-nav a.nav-link {
@@ -49,6 +48,9 @@ footer, .card.browse-card, .main-browse, .container-fluid.footer{
 footer p, footer p a, .col, .duet_from{
    color: white;
    text-decoration: none;
+}
+.material-icons{
+   display: none;
 }
 
 .container-fluid {
@@ -129,7 +131,7 @@ a {
    width: 100%;
 }
 .progress-div{
-   padding-top: 3%;
+   padding-top: 4%;
 }
 
 .duration{
@@ -143,11 +145,18 @@ a {
    padding-right: 0;
    padding-top: 1.5%;
 }
-button.play, button.pause, button.likes{
+
+
+button.play, button.pause{
+   font-size: 1.75rem;
    color: white;
-   font-size: 2vw;
    padding-left: 0;
 }
+button.likes{
+   padding-left: .0rem;
+}
+
+
 /* Browse Component */
 .img-list{
    height: 100px;
@@ -194,6 +203,9 @@ div.browse-img-div{
 .main-browse .audio-control, .home .audio-control{
    display: none;
 }
+form{
+   padding: .5rem;
+}
 
 /* Screen sizes for 768px and above */
 @media(min-width: 768px) {
@@ -237,14 +249,17 @@ div.browse-img-div{
       top: 5px;
       right: 8px;
       padding-left: .4rem;
-      font-size: 3rem;
    }
+
+
    
    /* music page styling - big screen */
-   .card-img-top {
+   img.card-img-top {
+      margin-right: auto;
+      margin-left: auto;
       display: flex;
-      max-width: 300px;
-      max-height: 300px;
+      width: 65%;
+      height: 65%;
       padding-bottom: 1rem;
       border-radius: 10px 10px 0 0;
    }
@@ -266,8 +281,26 @@ div.browse-img-div{
    footer .row {
       height: 125px;
    }
-
-
+   .col.music-detail-page{
+      flex-direction: row;
+   }
+   button.play, button.pause{
+      font-size: 5vw;
+      padding-top: .2rem;
+   }
+   .progress-div{
+      margin-right: 0;
+      padding-top: 5%;
+      margin-left: 2rem;
+   }
+   button.likes{
+      padding-left: .0rem;
+   }
+   .music-detail-img, .img-size{
+      height: 40%;
+      width: 40%;
+   }
+   
    /* Big display: Browse.js */
    .img-list{
       width: 100%;
@@ -382,6 +415,14 @@ div.browse-img-div{
    }
    .main-browse .audio-control, .home .audio-control{
       display: flex;
+   }
+   button.play, button.pause, button.likes{
+      font-size: 3vw;
+      
+   }
+   .progress-div{
+      padding-top: 4%;
+      margin-left: 0;
    }
 }
 
