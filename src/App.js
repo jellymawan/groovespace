@@ -29,6 +29,7 @@ function App(props) {
           </Route>
           <Route path="/browse" element={<Browse songs={props.songs} />} />
           <Route path="/about" element={<Static.AboutPage />} />
+          <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={loginUser} />} />
           <Route path="*" element={<Static.ErrorPage />} />
         </Routes>

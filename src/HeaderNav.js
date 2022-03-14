@@ -37,7 +37,7 @@ export function NavLinks(props) {
         <Nav.Link href="/browse">BROWSE</Nav.Link>
       </li>
       <li className="nav-item">
-        <Nav.Link href="#">UPLOAD</Nav.Link>
+        <Nav.Link href="/upload">UPLOAD</Nav.Link>
       </li>
       <li className="nav-item">
         <Nav.Link href="/signin">SIGN IN</Nav.Link>
