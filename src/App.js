@@ -10,6 +10,7 @@ import { Browse } from './Browse';
 import { MdOpenInNewOff, MdSettingsInputComponent } from 'react-icons/md';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
+import {Upload} from './Upload';
 
 
 
@@ -29,6 +30,7 @@ function App(props) {
           </Route>
           <Route path="/browse" element={<Browse songs={props.songs} />} />
           <Route path="/about" element={<Static.AboutPage />} />
+          <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />
           <Route path="*" element={<Static.ErrorPage />} />
         </Routes>
