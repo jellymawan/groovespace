@@ -56,6 +56,7 @@ export function Search(props) {
         return song;
       }
     });
+    console.log(filteredArr);
     props.callBack(filteredArr);
   }
   return (

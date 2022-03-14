@@ -27,7 +27,7 @@ function App(props) {
       <HeaderNav songs={search} callBack={setSearch}/>
       <div>
         <Routes>
-          <Route path="/" element={<CardList songs={props.songs} />} />
+          <Route path="/" element={<CardList songs={search} />} />
           <Route path="/songs" element={<MusicPage />}>
             <Route path=":songID" element={<MusicDetail songs={props.songs} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
