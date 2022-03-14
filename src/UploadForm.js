@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export default function UploadForm(props) {
     const [userTitleInput, setUserTitleInput] = useState("");
@@ -9,7 +10,7 @@ export default function UploadForm(props) {
     const handleClick = (event) => {
         console.log("submitting!");
 
-        props.uploadSong(props.user, userTitleInput, userDescInput, newCover, newAudio);
+        props.uploadSong(props.user, userTitleInput, userDescInput, imgURL, newAudio);
 
         setUserTitleInput("");
     }
@@ -22,6 +23,29 @@ export default function UploadForm(props) {
     const handleDescChange = (event) => {
         const inputValue = event.target.value
         setUserDescInput(inputValue);
+    }
+
+    const [imageFile, setImageFile] = useState(undefined)
+    let initialURL = '/imgs/cover/Digital album cover.jpeg'
+
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(initialURL)
+
+    const handleImageChange = (event) => {
+        if (event.target.files.length > 0 && event.target.files[0]) {
+            const imageFile = event.target.files[0]
+            setImageFile(imageFile);
+            setImagePreviewUrl(URL.createObjectURL(imageFile));
+        }
+    }
+
+    const imgURL = null;
+    const handleImageUpload = async (event) => {
+        console.log("Uploading", imageFile);
+
+        const storage = getStorage();
+        const newImageRef = ref(storage, "covers/" + userTitleInput + ".png")
+        await uploadBytes(newImageRef, imageFile)
+        const imgURL = await getDownloadURL(newImageRef)
     }
 
     return (
@@ -40,15 +64,15 @@ export default function UploadForm(props) {
                 disabled={!user}
             />
             <div></div>
-            <label for="image-file">Your Album Cover (?): </label>
-            <input id="image-file" type="file" accept="image/png, image/gif, image/jpeg" />
+            <img src={imagePreviewUrl}></img>
+            <label htmlFor="image-file" className="btn btn-secondary">Choose Cover Image</label>
+            <input id="image-file" type="file" className="d-none" accept="image/png, image/gif, image/jpeg" onChange={handleImageChange} />
             <div></div>
-            <label for="song-file">Your Song: </label>
-            <input id="song-file" type="file" accept="audio/*" />
-            {/* We need like 5 text areas and one music file upload, do we need like 5 state variables? And how do we do the music file upload? */}
+            <label htmlFor="song-file" className="btn btn-success">Choose Song</label>
+            <input id="song-file" type="file" className="d-none" accept="audio/*" />
             <div></div>
             {user &&
-                <button className="btn" type="button" onClick={handleClick}>
+                <button className="btn btn-primary" type="button" onClick={handleClick}>
                     <span>Upload</span>
                 </button>}
         </form>
