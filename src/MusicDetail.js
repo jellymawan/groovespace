@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useParams, Link} from 'react-router-dom';
 import {FcLike} from 'react-icons/fc';
 import {MdGroupAdd} from 'react-icons/md';
@@ -42,8 +42,8 @@ export function MusicDetail(props){
                             (<p className="duet-from">Duetted from: {<GetDuet currSong={song} songsArr={songsArr}/>}</p>)
                             : (<p></p>)}
 
-                        {<Likes numLikes={song}/>} 
-                        {<Duets numDuets={song}/>}
+                        {<Likes numLikes={song.likes}/>} 
+                        {<Duets numDuets={song.duets}/>}
                         <div className="row">
                             <AudioPlayer songsArr={songsArr} songid={song.id}/>
 
@@ -57,8 +57,7 @@ export function MusicDetail(props){
     );
 }
 
-function Likes(props){
-    let numLikes = props.numLikes.likes;
+function Likes({numLikes}){
     const [likes, setLikes] = useState(numLikes);
 
     const handleLike = (event) => {
@@ -74,8 +73,7 @@ function Likes(props){
     );
 }
 
-function Duets(props){
-    let numDuets = props.numDuets.duets;
+function Duets({numDuets}){
     const [duets, setDuets] = useState(numDuets);
 
     return(

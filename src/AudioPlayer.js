@@ -7,28 +7,14 @@ export function AudioPlayer(props){
     const [trackProgress, setTrackProgress] = useState(0);
     const [duetProgress, setDuetProgress] = useState(0);
     const [durr, setDurr] = useState(0);
+    const [isDuet, setIsDuet] = useState(true);
 
-    const song_arr = findSongs(props.songsArr, props.songid);
+    const song_arr = FindSongs(props.songsArr, props.songid);
 
-    let duetObj = ';'
-    let isDuet = true;
-    let duetArr = [];
-
-    // const duets = song_arr.map((song) => {
-    //     console.log(song.audio);
-    // })
-
-    for(let i = 0; i < song_arr.length; i++){
-        let song = song_arr[i].audio;
-        duetObj = new Audio(song);
-        duetArr.push(duetObj);
-    }
-    
-
-    const duetArrRef = useRef(duetArr);
+    const songsRef = useRef([]);
     const intervalRef = useRef();
-    const duration = duetArrRef.current[0];
     
+
     const calculateTime = (secs) => {
         const minutes = Math.floor(secs/60);
         const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -38,74 +24,78 @@ export function AudioPlayer(props){
     }
 
     useEffect(() => {
-        duetArr[0].addEventListener("loadedmetadata", function(_event) {
-            const seconds = Math.floor(duetArr[0].duration);           
+        const songs = song_arr.map((song) => {
+            return new Audio(song.audio)
+        })
+        songsRef.current = songs;
+
+        songs[0].addEventListener("loadedmetadata", function(_event) {
+            const seconds = Math.floor(songs[0].duration);           
             setDurr(seconds);
         });
+    }, [props.songid]);
 
+    useEffect(() => {
         if(isPlaying){
-            duetArrRef.current[0].play();
+            console.log(songsRef.current[0].currentTime);
+            songsRef.current[0].play();
             startTimer();
             if(isDuet){
-                for(let i = 1; i < duetArrRef.current.length; i++){
-                    duetArrRef.current[i].play()
+                for(let i = 1; i < songsRef.current.length; i++){
+                    songsRef.current[i].play()
                 }
             }
         }else{
+            console.log(songsRef.current[0].currentTime);
             clearInterval(intervalRef.current);
-            duetArrRef.current[0].pause();
+            songsRef.current[0].pause();
             if(isDuet){
-                for(let i = 1; i < duetArrRef.current.length; i++){
-                    duetArrRef.current[i].pause()
+                for(let i = 1; i < songsRef.current.length; i++){
+                    songsRef.current[i].pause()
                 }
             }
         }
 
-
         function cleanup() {
-            duetArrRef.current[0].pause();
-            duetArrRef.current[0].currentTime = 0;
-            for(let i = 1; i < duetArrRef.current.length; i++){
-                duetArrRef.current[i].pause()
-                duetArrRef.current[i].currentTime = 0;
+            songsRef.current[0].pause();
+            for(let i = 1; i < songsRef.current.length; i++){
+                songsRef.current[i].pause()
             }
         }
         return cleanup;
     }, [isPlaying, props.songid]);
 
+
     const startTimer = () =>{
         clearInterval(intervalRef.current);
+        console.log(songsRef.current[0].currentTime);
         intervalRef.current = setInterval(() => {
-            if(duetArrRef.current[0].ended){
+            if(songsRef.current[0].ended){
                 if(isDuet){                    
-                    for(let i = 1; i < duetArrRef.current.length; i++){
-                        duetArrRef.current[i].pause();
-                        duetArrRef.current[i].currentTime = 0;
+                    for(let i = 1; i < songsRef.current.length; i++){
+                        songsRef.current[i].pause();
+                        songsRef.current[i].currentTime = 0;
                     }
                 }
                 setIsPlaying(false);
-                duetArrRef.current[0].currentTime = 0;
-                setTrackProgress(duetArrRef.current[0].currentTime);
-                
+                songsRef.current[0].currentTime = 0;
             }
-            else{
-                setTrackProgress(duetArrRef.current[0].currentTime);
-            }
+            setTrackProgress(songsRef.current[0].currentTime);
         }, [1000]);
     }
 
 
     const onScrub = (value) => {
         clearInterval(intervalRef.current);
-        
+
         if(isDuet){
-            for(let i = 1; i < duetArrRef.current.length; i++){
-                duetArrRef.current[i].currentTime = value;
-                setDuetProgress(duetArrRef.current[i].currentTime);
+            for(let i = 1; i < songsRef.current.length; i++){
+                songsRef.current[i].currentTime = value;
+                setDuetProgress(songsRef.current[i].currentTime);
             }
         }
-        duetArrRef.current[0].currentTime = value;
-        setTrackProgress(duetArrRef.current[0].currentTime);
+        songsRef.current[0].currentTime = value;
+        setTrackProgress(songsRef.current[0].currentTime);
 
         startTimer();
     }
@@ -116,7 +106,7 @@ export function AudioPlayer(props){
         }
         startTimer();
     }
-   
+
     return(
         <div className="row audio-control">
             <AudioControls
@@ -143,16 +133,13 @@ export function AudioPlayer(props){
                     </div>
                 </div>
             </div>
-            
-            
-            
         </div>
     )
 
 }
 
 
-function findSongs(songList, currSong){
+function FindSongs(songList, currSong){
     let songArr = [];
 
     currSong = songList.filter((song) => {
@@ -169,7 +156,7 @@ function findSongs(songList, currSong){
 
         duet_id = currSong[0].duet_from;
         songArr.push(currSong[0]); //pushes all other duetted songs
-        
+
     }
     return songArr;
 }
