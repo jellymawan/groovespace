@@ -1,21 +1,27 @@
 import { useState } from 'react';
 
 export default function UploadForm(props) {
-    const [userInput, setUserInput] = useState("");
+    const [userTitleInput, setUserTitleInput] = useState("");
+    const [userDescInput, setUserDescInput] = useState("");
 
     const { user } = props;
 
     const handleClick = (event) => {
         console.log("submitting!");
 
-        props.uploadSong(props.user, newTitle, newDescription, newCover, newAudio);
+        props.uploadSong(props.user, userTitleInput, userDescInput, newCover, newAudio);
 
-        setUserInput("");
+        setUserTitleInput("");
     }
 
-    const handleChange = (event) => {
+    const handleTitleChange = (event) => {
         const inputValue = event.target.value
-        setUserInput(inputValue);
+        setUserTitleInput(inputValue);
+    }
+
+    const handleDescChange = (event) => {
+        const inputValue = event.target.value
+        setUserDescInput(inputValue);
     }
 
     return (
@@ -23,8 +29,14 @@ export default function UploadForm(props) {
             {user && <p>Signed in as: {user.displayName}</p>}
             <textarea
                 className="form-control" rows="2" placeholder="Title"
-                onChange={handleChange}
-                value={userInput}
+                onChange={handleTitleChange}
+                value={userTitleInput}
+                disabled={!user}
+            />
+            <textarea
+                className="form-control" rows="2" placeholder="Description"
+                onChange={handleDescChange}
+                value={userDescInput}
                 disabled={!user}
             />
             <div></div>
