@@ -2,7 +2,6 @@ import React from 'react';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import { getAuth, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
 
-const auth = getAuth();
 
 const FIREBASEUI_CONFIG = {
     signInOptions: [
@@ -17,6 +16,8 @@ const FIREBASEUI_CONFIG = {
 };
 
 export function SignInPage(props) {
+    const auth = getAuth();
+
     return (
         !props.user &&
             <StyledFirebaseAuth uiConfig={FIREBASEUI_CONFIG} firebaseAuth={auth} />

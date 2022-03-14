@@ -14,11 +14,16 @@ export function AudioPlayer(props){
     let isDuet = true;
     let duetArr = [];
 
+    // const duets = song_arr.map((song) => {
+    //     console.log(song.audio);
+    // })
+
     for(let i = 0; i < song_arr.length; i++){
         let song = song_arr[i].audio;
         duetObj = new Audio(song);
         duetArr.push(duetObj);
     }
+    
 
     const duetArrRef = useRef(duetArr);
     const intervalRef = useRef();

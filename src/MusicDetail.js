@@ -1,6 +1,5 @@
 import React from 'react';
 import {useParams, Link} from 'react-router-dom';
-import ReactAudioPlayer from 'react-audio-player'; //plays music
 import {FcLike} from 'react-icons/fc';
 import {MdGroupAdd} from 'react-icons/md';
 import {useState} from 'react';

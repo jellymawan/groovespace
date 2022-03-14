@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {useParams, Navigate} from 'react-router-dom';
-import ReactAudioPlayer from 'react-audio-player'; //plays music
 import {Link, useNavigate} from 'react-router-dom';
 import _ from 'lodash';
-import {AudioPlayer} from './AudioPlayer'
+import {AudioPlayer} from './AudioPlayer';
 
 export function Browse(props){
     const songsArr = props.songs;

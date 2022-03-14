@@ -21,7 +21,7 @@ const firebaseConfig = {
 };
 
 // initialize firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 ReactDOM.render(
