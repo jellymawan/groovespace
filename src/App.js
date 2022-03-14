@@ -18,15 +18,19 @@ function App(props) {
   const [user, loading, error] = useAuthState(getAuth());
 
   const currentUser = user;
+
+  // state variable to update data based on user input
+  const [search, setSearch] = useState(props.songs);
+
   return (
     <div>
-      <HeaderNav />
+      <HeaderNav songs={search} callBack={setSearch}/>
       <div>
         <Routes>
           <Route path="/" element={<CardList songs={props.songs} />} />
           <Route path="/songs" element={<MusicPage />}>
             <Route path=":songID" element={<MusicDetail songs={props.songs} />} />
-            <Route index="/songs" element={<CardList songs={props.songs} />} />
+            <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
           <Route path="/browse" element={<Browse songs={props.songs} />} />
           <Route path="/about" element={<Static.AboutPage />} />

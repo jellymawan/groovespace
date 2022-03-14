@@ -1,15 +1,9 @@
-// SEARCH FUNCTIONALITY STILL INCOMPLETE
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import Data from './data/music-data.json';
-import { CardList } from './CardList';
+import { queryAllByAltText } from '@testing-library/react';
+import musicData from './data/music-data.json';
 
-/**
- * 
- * @param {*} props 
- * @returns 
- */
 export default function HeaderNav(props) {
   return (
     <header>
@@ -21,7 +15,7 @@ export default function HeaderNav(props) {
             <Nav>
               <NavLinks />
             </Nav>
-            <Search />
+            <Search songs={props.songs} callBack={props.callBack}/>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -46,47 +40,33 @@ export function NavLinks(props) {
   );
 }
 
-/**
- * Incomplete
- * @param {*} props 
- * @returns 
- */
+// component for search bar and functionality. PARTIALLY COMPLETE***
 export function Search(props) {
   const [query, setQuery] = useState("");
-  // const onChange = (e) => {
-  //   setQuery(e.target.value)
-  //   document.querySelector('.btn.btn-outline-secondary').addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     console.log(query);
-  //     HandleSearch(query);
-  //   });
-  // }
-  function onSubmit(e) {
-    e.preventDefault();
-    HandleSearch(query);
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+    props.callBack(musicData);
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const filteredArr = props.songs.filter((song) => {
+      if (query === "") {
+        return song;
+      } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
+      song.artist.toLowerCase().includes(query.toLowerCase())) {
+        return song;
+      }
+    });
+    props.callBack(filteredArr);
   }
   return (
-    <form className="d-flex m-auto">
+    <form className="d-flex m-auto" onSubmit={handleSubmit}>
       <label hidden htmlFor="search">Search</label>
-      <input className="form-control me-2" type="search" placeholder="Search user/song/artist" aria-label="Search for user, song, artist" id="search" onChange={e => setQuery(e.target.value)} />
-      <button className="btn btn-outline-secondary" type="submit" onSubmit={onSubmit}>SEARCH</button>
+      <input className="form-control me-2" type="search"
+      placeholder="Search user/song/artist"
+      aria-label="Search for user, song, artist"
+      id="search" onChange={handleChange} />
+      <button className="btn btn-outline-secondary" type="submit">SEARCH</button>
     </form>
   );
-}
-
-/**
- * Incomplete
- * @param {*} filteredArr 
- */
-function HandleSearch(query) {
-  let filteredArr = Data.filter((song) => {
-    if (query === "") {
-      return song;
-    } else if (query === song.title.toLowerCase().includes(query.toLowerCase()) || 
-    query === song.artist.toLowerCase().includes(query.toLowerCase())) {
-      return song;
-    }
-  });
-  console.log(filteredArr);
-  CardList(filteredArr);
 }
