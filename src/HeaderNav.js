@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { queryAllByAltText } from '@testing-library/react';
 import musicData from './data/music-data.json';
 
 export default function HeaderNav(props) {
