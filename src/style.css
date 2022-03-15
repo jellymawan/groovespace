@@ -19,14 +19,16 @@
    background-color: slategray;
  }
   
+
  .row {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
    gap: 0.5rem;
    align-items: flex-start;
+}
+div.row.med-row{
    flex-direction: column;
- }
-  
+}  
  .row, .card:nth-child(1) {
    width: 2px 80px;
    border: 0 solid silver;
