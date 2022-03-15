@@ -17,17 +17,40 @@ import {getDatabase, ref, onValue} from 'firebase/database';
 
 function App(props) {
   const [user, loading, error] = useAuthState(getAuth());
+  
 
   const currentUser = user;
 
-  let db = getDatabase();
-  let a = ref(db, 'songs');
-  onValue(a, (snapshot) => {
-    console.log(snapshot.val());
-  })
+
+  const [search, setSearch] = useState(props.songs);
+  //const [data, setData] = useState("");
+  useEffect(() => {
+    const db = getDatabase();
+    const songsRef = ref(db, 'songs');
+    const songs = onValue(songsRef, (snapshot) => {
+      const database = snapshot.val();
+      const keys = Object.keys(database);
+      const songArray = keys.map((key) => {
+        const singleKey = {...database[key]}
+        return singleKey
+    })
+    //setData(songArray);  
+    setSearch(songArray);  
+    function cleanup(){
+      songs();
+    }
+    return cleanup;
+    });
+
+  },[])
+
+  
+
+
+
 
   // state variable to update data based on user input
-  const [search, setSearch] = useState(props.songs);
+  //const [search, setSearch] = useState(props.songs);
   return (
     <div>
       <HeaderNav />
@@ -35,7 +58,8 @@ function App(props) {
         <Routes>
           <Route path="/" element={<CardList songs={search} />} />
           <Route path="/songs" element={<MusicPage />}>
-            <Route path=":songID" element={<MusicDetail songs={props.songs} />} />
+            {/* <Route path=":songID" element={<MusicDetail songs={props.songs} />} /> */}
+            <Route path=":songID" element={<MusicDetail songs={search} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
           <Route path="/browse" element={<Browse songs={search} callBack={setSearch} />} />
