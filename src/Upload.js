@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush,DatabaseReference} from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush} from 'firebase/database';
 import UploadForm from './UploadForm';
 
 
 export function Upload(props) {
     console.log(props);
-
-    let songid = Math.random() * 1000000;
 
     const db = getDatabase();
     const urlParams = useParams();
@@ -37,7 +35,7 @@ export function Upload(props) {
 
         const currentDate = new Date().toISOString().slice(0,10);
         const newSong = {
-            "id": songid,
+            "id": 131613613663136, 
             "artist": userObj.displayName,
             "title": newTitle,
             "description": newDescription,
@@ -50,11 +48,10 @@ export function Upload(props) {
             "likes": 0,
             "id": newTitle
         }
-        console.log(newSong);
         firebasePush(songsRef, newSong)
             .then(() => console.log("Pushed"))
             .then(() => {
-                console.log(Object.keys(newSong));
+                console.log(newSong);
             })
             .catch((err) => console.log(err))
     }

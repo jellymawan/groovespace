@@ -41,7 +41,7 @@ export function CardList(props) {
 
 
   const musicCardArray = songsArr.map((song) => {
-    let newMusicCard = <MusicCard  songsArr={songsArr} key={song.title} song={song} />;
+    let newMusicCard = <MusicCard  songsArr={songsArr} key={song.id} song={song} />;
     return newMusicCard;
   });
 

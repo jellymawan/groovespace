@@ -23,7 +23,6 @@ function App(props) {
   const [search, setSearch] = useState(props.songs);
   const [rawData, setRawData] = useState(props.songs);
 
-
   useEffect(() => {
     const db = getDatabase();
     const songsRef = ref(db, 'songs');
@@ -36,10 +35,7 @@ function App(props) {
       })
       setRawData(songArray);
       setSearch(songArray);
-      console.log(songArray);
     });
-
-
 
     function cleanup() {
       songs();
