@@ -35,9 +35,8 @@ export default function UploadForm(props) {
 
     const [imageFile, setImageFile] = useState(undefined);
     const [songFile, setSongFile] = useState(undefined);
-    let initialURL = '/imgs/cover/Digital album cover.jpeg';
 
-    const [imagePreviewUrl, setImagePreviewUrl] = useState(initialURL)
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(null)
 
     const handleImageChange = (event) => {
         if (event.target.files.length > 0 && event.target.files[0]) {

@@ -47,7 +47,7 @@ function App(props) {
   //const [search, setSearch] = useState(props.songs);
   return (
     <div>
-      <HeaderNav />
+      <HeaderNav user={currentUser}/>
       <div>
         <Routes>
           <Route path="/" element={<CardList songs={search} />} />
