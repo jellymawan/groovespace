@@ -14,15 +14,15 @@ export function AudioPlayer(props){
     function findSongs(songList, currSong){
         let songArr = [];
     
-
+        
 
         currSong = songList.filter((song) => {
             return currSong === song.id
         });
-        
-
+    
         songArr.push(currSong[0]); //pushes current song
         let duet_id = currSong[0].duet_from;
+    
     
         while(duet_id != 0){ //while there involves a duet
             currSong = songList.filter((song) => {
@@ -36,6 +36,7 @@ export function AudioPlayer(props){
         }
         return songArr;
     }
+    console.log(song_arr);
 
     const songsRef = useRef([]);
     const intervalRef = useRef();
@@ -48,8 +49,6 @@ export function AudioPlayer(props){
         const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
         return `${returnMinutes} : ${returnSeconds}`
     }
-
-
 
     useEffect(() => { 
         const songs = song_arr.map((song) => {
@@ -68,7 +67,6 @@ export function AudioPlayer(props){
         if(isPlaying){
             startTimer();
             for(let i = 0; i < songsRef.current.length; i++){
-                console.log(songsRef.current[i]);
                 songsRef.current[i].play()
             }
         }else{

@@ -44,11 +44,6 @@ function App(props) {
 
   },[])
 
-  
-
-
-
-
   // state variable to update data based on user input
   //const [search, setSearch] = useState(props.songs);
   return (

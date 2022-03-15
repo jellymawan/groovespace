@@ -40,7 +40,7 @@ export function Browse(props) {
 
     return (
         <div>
-            <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} />
+            <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} rawData={props.rawData}/>
             <div className="row align-items-center">
                 <div className="col-3 sort-by">
                     Sort By:
@@ -87,8 +87,6 @@ function MusicList({ songsArr, song }) {
                     </div>
                 </div>
             </Link>
-            {/* <AudioPlayer songsArr={songsArr} songid={song.id}/> */}
-
         </div>
 
     )
@@ -100,8 +98,8 @@ export function Search(props) {
     const handleChange = (event) => {
         setQuery(event.target.value);
         // resets data to original data 
-        props.data(musicData);
-        props.callBack(musicData);
+        props.data(props.rawData);
+        props.callBack(props.rawData);
     }
     const handleSubmit = (event) => {
         event.preventDefault();

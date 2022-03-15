@@ -24,6 +24,7 @@
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
    gap: 0.5rem;
    align-items: flex-start;
+   flex-direction: column;
  }
   
  .row, .card:nth-child(1) {
