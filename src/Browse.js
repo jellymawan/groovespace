@@ -82,6 +82,7 @@ function MusicList({ songsArr, song }) {
 
 export function Search(props) {
     const [query, setQuery] = useState("");
+    const [empty, isEmpty] = useState(true);
     const handleChange = (event) => {
         setQuery(event.target.value);
         // resets data to original data 
@@ -96,6 +97,8 @@ export function Search(props) {
             } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
                 song.artist.toLowerCase().includes(query.toLowerCase())) {
                 return song;
+            }else{
+                return [];
             }
         });
         props.data(filteredArr);

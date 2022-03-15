@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function UploadForm(props) {
     const [userTitleInput, setUserTitleInput] = useState("");
@@ -81,7 +80,6 @@ export default function UploadForm(props) {
             <label htmlFor="song-file" className="btn btn-success">Choose Song</label>
             <input id="song-file" type="file" accept="audio/*" onChange={handleSongChange} />
             <div></div>
-            {isLoading && <FontAwesome icon={faSpinner}/> }
             {user &&
         
                 <button className="btn btn-primary" type="button" onClick={handleClick}>

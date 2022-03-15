@@ -12,6 +12,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import { Upload } from './Upload';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import {ProfilePage} from './ProfilePage';
 
 
 function App(props) {
@@ -33,7 +34,6 @@ function App(props) {
         const singleKey = { ...database[key] }
         return singleKey
       })
-      //setData(songArray);
       setRawData(songArray);
       setSearch(songArray);
       function cleanup() {
@@ -60,6 +60,7 @@ function App(props) {
           <Route path="/about" element={<Static.AboutPage />} />
           <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />
+          <Route path="/profile" element={<ProfilePage user={currentUser} songs={rawData}/>} />
           <Route path="*" element={<Static.ErrorPage />} />
         </Routes>
       </div>
