@@ -1,59 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush} from 'firebase/database';
-import UploadForm from './UploadForm';
+import { useState } from 'react';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
+export default function UploadForm(props) {
+    const [userTitleInput, setUserTitleInput] = useState("");
+    const [userDescInput, setUserDescInput] = useState("");
+
+    const { user } = props;
+
+    const handleClick = async (event) => {
+        const storage = getStorage();
+        const newImageRef = ref(storage, "covers/" + userTitleInput + ".png");
+        const newSongRef = ref(storage, "songs/" + userTitleInput + ".mp4");
 
 
-export function Upload(props) {
-    const db = getDatabase();
-    const urlParams = useParams();
-    const [songsArray, setSongsArray] = useState([]);
-    useEffect(() => {   
-        const songsRef = ref(db, "songs");
-
-        const offFunction = onValue(songsRef, (snapshot) => {
-            const songsObject = snapshot.val();
-            const songKeyArray = Object.keys(songsObject);
-            const allSongsArray = songKeyArray.map((key) => {
-                const whichSong = { ...songsObject[key], firebaseKey: key };
-                return whichSong;
-            })
-
-            setSongsArray(allSongsArray);
-        })
-
-        function cleanup() {
-            offFunction();
-        }
-        return cleanup;
-    }, [db])
-
-    const uploadSong = (userObj, newTitle, newDescription, newCover, newAudio) => {
-        const songsRef = ref(db, "songs");
-
-        const currentDate = new Date().toISOString().slice(0,10);
-        const newSong = {
-            "id": 131613613663136, 
-            "artist": userObj.displayName,
-            "title": newTitle,
-            "description": newDescription,
-            "release_date": currentDate,
-            "cover": newCover,
-            "audio": newAudio,
-            "likes": 0,
-            "duets": 0,
-            "duet_from": 0
-        }
-        firebasePush(songsRef, newSong)
-            .then(() => console.log("Pushed"))
-            .then(() => {
-                console.log(newSong);
-            })
-            .catch((err) => console.log(err))
+        await uploadBytes(newImageRef, imageFile)
+        const imgURL = await getDownloadURL(newImageRef);
+        await uploadBytes(newSongRef, songFile)
+        const songURL = await getDownloadURL(newSongRef);
+        
+        props.uploadSong(props.user, userTitleInput, userDescInput, imgURL, songURL);
+        setUserTitleInput("");
+        setUserDescInput("");
     }
+
+    const handleTitleChange = (event) => {
+        const inputValue = event.target.value
+        setUserTitleInput(inputValue);
+    }
+
+    const handleDescChange = (event) => {
+        const inputValue = event.target.value
+        setUserDescInput(inputValue);
+    }
+
+    const [imageFile, setImageFile] = useState(undefined);
+    const [songFile, setSongFile] = useState(undefined);
+    let initialURL = '/imgs/cover/Digital album cover.jpeg';
+
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(initialURL)
+
+    const handleImageChange = (event) => {
+        if (event.target.files.length > 0 && event.target.files[0]) {
+            const imageFile = event.target.files[0]
+            setImageFile(imageFile);
+            setImagePreviewUrl(URL.createObjectURL(imageFile));
+        }
+    }
+
+    const handleSongChange = (event) => {
+        if (event.target.files.length > 0 && event.target.files[0]) {
+            const songFile = event.target.files[0]
+            setSongFile(songFile);
+        }
+    }
+
     return (
-        <div>
-            <UploadForm user={props.user} uploadSong={uploadSong} />
-        </div>
+        <form>
+            {user && <p>Signed in as: {user.displayName}</p>}
+            <textarea
+                className="form-control" rows="2" placeholder="Title"
+                onChange={handleTitleChange}
+                value={userTitleInput}
+                disabled={!user}
+            />
+            <textarea
+                className="form-control" rows="2" placeholder="Description"
+                onChange={handleDescChange}
+                value={userDescInput}
+                disabled={!user}
+            />
+            <div></div>
+            <img src={imagePreviewUrl}></img>
+            <label htmlFor="image-file" className="btn btn-secondary">Choose Cover Image</label>
+            <input id="image-file" type="file" className="d-none" accept="image/png, image/gif, image/jpeg" onChange={handleImageChange} />
+            <div></div>
+            <label htmlFor="song-file" className="btn btn-success">Choose Song</label>
+            <input id="song-file" type="file" accept="audio/*" onChange={handleSongChange} />
+            <div></div>
+            {user &&
+                <button className="btn btn-primary" type="button" onClick={handleClick}>
+                    <span>Upload</span>
+                </button>}
+        </form>
     );
 }

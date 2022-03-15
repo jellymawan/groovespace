@@ -14,10 +14,14 @@ export function AudioPlayer(props){
     function findSongs(songList, currSong){
         let songArr = [];
     
+
+
         currSong = songList.filter((song) => {
             return currSong === song.id
         });
-    
+        
+        console.log(currSong);
+
         songArr.push(currSong[0]); //pushes current song
         let duet_id = currSong[0].duet_from;
     
@@ -60,7 +64,7 @@ export function AudioPlayer(props){
         });
     }, [props.songid]);
 
-    
+
     useEffect(() => { //some code taken from https://letsbuildui.dev/articles/building-an-audio-player-with-react-hooks
         if(isPlaying){
             startTimer();
