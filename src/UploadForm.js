@@ -7,18 +7,18 @@ export default function UploadForm(props) {
 
     const { user } = props;
 
-    const handleClick = (event) => {
+    const handleClick = async (event) => {
         const storage = getStorage();
         const newImageRef = ref(storage, "covers/" + userTitleInput + ".png");
-        uploadBytes(newImageRef, imageFile)
-            .then(() => {
-                return getDownloadURL(newImageRef);
-            })
-            .then((url) => {
-                console.log(url);
-                props.uploadSong(props.user, userTitleInput, userDescInput, url, "audio placeholder");
-            })
+        const newSongRef = ref(storage, "songs/" + userTitleInput + ".mp4");
 
+
+        await uploadBytes(newImageRef, imageFile)
+        const imgURL = await getDownloadURL(newImageRef);
+        await uploadBytes(newSongRef, songFile)
+        const songURL = await getDownloadURL(newSongRef);
+        
+        props.uploadSong(props.user, userTitleInput, userDescInput, imgURL, songURL);
         setUserTitleInput("");
         setUserDescInput("");
     }
@@ -33,8 +33,9 @@ export default function UploadForm(props) {
         setUserDescInput(inputValue);
     }
 
-    const [imageFile, setImageFile] = useState(undefined)
-    let initialURL = '/imgs/cover/Digital album cover.jpeg'
+    const [imageFile, setImageFile] = useState(undefined);
+    const [songFile, setSongFile] = useState(undefined);
+    let initialURL = '/imgs/cover/Digital album cover.jpeg';
 
     const [imagePreviewUrl, setImagePreviewUrl] = useState(initialURL)
 
@@ -46,14 +47,11 @@ export default function UploadForm(props) {
         }
     }
 
-    const imgURL = null;
-    const handleImageUpload = async (event) => {
-        console.log("Uploading", imageFile);
-
-        const storage = getStorage();
-        const newImageRef = ref(storage, "covers/" + userTitleInput + ".png")
-        await uploadBytes(newImageRef, imageFile)
-        const imgURL = await getDownloadURL(newImageRef)
+    const handleSongChange = (event) => {
+        if (event.target.files.length > 0 && event.target.files[0]) {
+            const songFile = event.target.files[0]
+            setSongFile(songFile);
+        }
     }
 
     return (
@@ -77,7 +75,7 @@ export default function UploadForm(props) {
             <input id="image-file" type="file" className="d-none" accept="image/png, image/gif, image/jpeg" onChange={handleImageChange} />
             <div></div>
             <label htmlFor="song-file" className="btn btn-success">Choose Song</label>
-            <input id="song-file" type="file" className="d-none" accept="audio/*" />
+            <input id="song-file" type="file" accept="audio/*" onChange={handleSongChange} />
             <div></div>
             {user &&
                 <button className="btn btn-primary" type="button" onClick={handleClick}>

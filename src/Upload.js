@@ -29,11 +29,11 @@ export function Upload(props) {
     }, [db])
 
     const uploadSong = (userObj, newTitle, newDescription, newCover, newAudio) => {
-        const songsRef = ref(db, "songs") //I'm not sure if the "songs" key is the correct key, but we'll get that figured out
+        const songsRef = ref(db, "songs");
 
         const newSong = {
-            "id": 131613613663136, //we might wanna do user id instead of song ID? Or add userID on top of song ID? Firebase does generate a song id for us, but I guess we can talk about that later
-            "artist": userObj.displayName, //not sure if this is correct
+            "id": 131613613663136, 
+            "artist": userObj.displayName,
             "title": newTitle,
             "description": newDescription,
             "release_date": Date.now(),
@@ -45,6 +45,9 @@ export function Upload(props) {
         }
         firebasePush(songsRef, newSong)
             .then(() => console.log("Pushed"))
+            .then(() => {
+                console.log(newSong);
+            })
             .catch((err) => console.log(err))
     }
     return (
