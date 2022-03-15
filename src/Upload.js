@@ -5,6 +5,8 @@ import UploadForm from './UploadForm';
 
 
 export function Upload(props) {
+    console.log(props);
+
     const db = getDatabase();
     const urlParams = useParams();
     const [songsArray, setSongsArray] = useState([]);

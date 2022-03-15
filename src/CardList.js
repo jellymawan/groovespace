@@ -25,7 +25,6 @@ export function MusicCard(props) {
             </div>
           </div>
         </Link>
-        {/* <AudioPlayer songsArr={songsArr} songid={props.song.id}/> */}
 
       </div>
     </div>

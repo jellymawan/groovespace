@@ -23,7 +23,6 @@ function App(props) {
   const [search, setSearch] = useState(props.songs);
   const [rawData, setRawData] = useState(props.songs);
 
-  //const [data, setData] = useState("");
   useEffect(() => {
     const db = getDatabase();
     const songsRef = ref(db, 'songs');
@@ -36,13 +35,14 @@ function App(props) {
       })
       setRawData(songArray);
       setSearch(songArray);
-      function cleanup() {
-        songs();
-      }
-      return cleanup;
     });
 
-  }, [])
+    function cleanup() {
+      songs();
+    }
+    return cleanup;
+
+   }, [])
   // state variable to update data based on user input
   //const [search, setSearch] = useState(props.songs);
   return (
@@ -52,13 +52,12 @@ function App(props) {
         <Routes>
           <Route path="/" element={<CardList songs={search} />} />
           <Route path="/songs" element={<MusicPage />}>
-            {/* <Route path=":songID" element={<MusicDetail songs={props.songs} />} /> */}
             <Route path=":songID" element={<MusicDetail songs={search} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
           <Route path="/browse" element={<Browse songs={search} callBack={setSearch} rawData={rawData}/>} />
           <Route path="/about" element={<Static.AboutPage />} />
-          <Route path="/upload" element={<Upload user={currentUser} />} />
+          <Route path="/upload" element={<Upload user={currentUser}/>} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />
           <Route path="/profile" element={<ProfilePage user={currentUser} songs={rawData}/>} />
           <Route path="*" element={<Static.ErrorPage />} />
