@@ -18,7 +18,8 @@ export function ProfilePage(props) {
 
     return (
         <div>
-            <h1 className="profile-name">{displayName}</h1>
+            <h1>{displayName}</h1>
+
             {MusicListArray}
         </div>
     )
