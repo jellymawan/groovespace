@@ -83,10 +83,6 @@ footer p, footer p a, .col, .duet_from{
    text-decoration: none;
 }
 
-.material-icons{
-   display: none;
-}
-
 .container {
    padding-top: 1.5rem;
    padding-bottom: 1.5rem;
