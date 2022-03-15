@@ -83,9 +83,9 @@ footer p, footer p a, .col, .duet_from{
    text-decoration: none;
 }
 
-.material-icons{
+/* .material-icons{
    display: none;
-}
+} */
 
 .container {
    padding-top: 1.5rem;
@@ -216,7 +216,10 @@ button.play:hover, button.pause:hover {
    cursor: pointer;
    padding-left: 0;
 }
-
+div.icon .likes{
+   width: 5rem;
+   color: white;
+}
 button.likes{
    padding-left: .0rem;
 }

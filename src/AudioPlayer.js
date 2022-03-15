@@ -10,12 +10,11 @@ export function AudioPlayer(props){
     const [isDuet, setIsDuet] = useState(true);
 
     const song_arr = findSongs(props.songsArr, props.songid);
+    
 
     function findSongs(songList, currSong){
         let songArr = [];
     
-        
-
         currSong = songList.filter((song) => {
             return currSong === song.id
         });
@@ -29,14 +28,12 @@ export function AudioPlayer(props){
                 return currSong[0].duet_from === song.id;//find the song associated with duet
             });
     
-            console.log(currSong);
             duet_id = currSong[0].duet_from;
             songArr.push(currSong[0]); //pushes all other duetted songs
     
         }
         return songArr;
     }
-    console.log(song_arr);
 
     const songsRef = useRef([]);
     const intervalRef = useRef();
