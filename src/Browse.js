@@ -14,8 +14,6 @@ export function Browse(props) {
     const [sortBy, setSortBy] = useState("relevance");
     const [displayedData, setDisplayedData] = useState(songsArr);
 
-    console.log(displayedData);
-
     let MusicListArray = displayedData.map((song) => {
         let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id} />
         return newMusicItem;
@@ -42,7 +40,7 @@ export function Browse(props) {
 
     return (
         <div>
-            {/* <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} /> */}
+            <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} />
             <div className="row align-items-center">
                 <div className="col-3 sort-by">
                     Sort By:
