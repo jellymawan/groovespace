@@ -97,8 +97,6 @@ export function Search(props) {
             } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
                 song.artist.toLowerCase().includes(query.toLowerCase())) {
                 return song;
-            }else{
-                return [];
             }
         });
         props.data(filteredArr);

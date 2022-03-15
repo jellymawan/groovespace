@@ -272,6 +272,10 @@ form{
    padding: .5rem;
 }
 
+.profile-name{
+   padding: 2rem;
+}
+
 /* Screen sizes for 768px and above */
 @media(min-width: 768px) {
    /* navbar and footer styling - big screen */

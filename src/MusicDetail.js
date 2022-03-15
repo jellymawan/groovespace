@@ -5,7 +5,7 @@ import { MdGroupAdd } from 'react-icons/md';
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { AudioPlayer } from './AudioPlayer'
-
+import {Upload} from './Upload';
 
 
 export function MusicDetail(props) {
@@ -49,7 +49,10 @@ export function MusicDetail(props) {
 
                         </div>
 
-                        <p><a href="#" className="btn btn-dark lg disabled" aria-label="click to add on">Add On</a></p>
+                        {/* <p><a href="#" className="btn btn-dark lg" aria-label="click to add on">Add On</a></p> */}
+                        <Link to="/upload" element={<Upload songid={song.id}/>} className="btn btn-dark lg">Add on</Link>
+                        {/* For some reason, not passing in the songid prop to the Upload component */}
+
                     </div>
                 </div>
             </div>

@@ -5,6 +5,8 @@ import UploadForm from './UploadForm';
 
 
 export function Upload(props) {
+    console.log(props);
+
     const db = getDatabase();
     const urlParams = useParams();
     const [songsArray, setSongsArray] = useState([]);
@@ -33,7 +35,6 @@ export function Upload(props) {
 
         const currentDate = new Date().toISOString().slice(0,10);
         const newSong = {
-            "id": 131613613663136, 
             "artist": userObj.displayName,
             "title": newTitle,
             "description": newDescription,
@@ -43,7 +44,8 @@ export function Upload(props) {
             "likes": 0,
             "duets": 0,
             "duet_from": 0,
-            "likes": 0
+            "likes": 0,
+            "id": newTitle
         }
         firebasePush(songsRef, newSong)
             .then(() => console.log("Pushed"))
