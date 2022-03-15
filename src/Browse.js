@@ -3,13 +3,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import { AudioPlayer } from './AudioPlayer';
-import musicData from './data/music-data.json';
-
 
 export function Browse(props) {
-
-    console.log(props.songs);
-
     const songsArr = props.songs;
     const [sortBy, setSortBy] = useState("relevance");
     const [displayedData, setDisplayedData] = useState(songsArr);
@@ -18,14 +13,6 @@ export function Browse(props) {
         let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id} />
         return newMusicItem;
     })
-
-
-    let temp = MusicListArray[0].props.songsArr.map((song) => {
-        let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id} />
-        return newMusicItem;
-    })
-
-
     const handleSort = (event) => {
         setSortBy(event.target.value);
     }
@@ -60,7 +47,7 @@ export function Browse(props) {
             </div>
             <div className="main-browse container-fluid">
                 <div className="row med-row">
-                    {temp}
+                    {MusicListArray}
                 </div>
             </div>
         </div>
