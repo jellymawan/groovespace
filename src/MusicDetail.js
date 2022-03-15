@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import {useParams, Link} from 'react-router-dom';
-import {FcLike} from 'react-icons/fc';
-import {MdGroupAdd} from 'react-icons/md';
-import {useState} from 'react';
-import {IconButton} from '@mui/material';
-import {AudioPlayer} from './AudioPlayer'
+import { useParams, Link } from 'react-router-dom';
+import { FcLike } from 'react-icons/fc';
+import { MdGroupAdd } from 'react-icons/md';
+import { useState } from 'react';
+import { IconButton } from '@mui/material';
+import { AudioPlayer } from './AudioPlayer'
 
 
 
-export function MusicDetail(props){
+export function MusicDetail(props) {
 
     const songsArr = props.songs;
 
@@ -17,15 +17,15 @@ export function MusicDetail(props){
     let song = {};
 
     //loops through data to get the song that matches the ID
-    for(let i=0; i<songsArr.length; i++){
-        if(songsArr[i].id+"" === ID){
+    for (let i = 0; i < songsArr.length; i++) {
+        if (songsArr[i].id + "" === ID) {
             song = songsArr[i];
         }
     }
-    
+
     const is_duet = song.duet_from != 0
 
-    return(
+    return (
         <main>
             <div className="container-fluid">
                 <div className="col music-detail-page">
@@ -38,14 +38,14 @@ export function MusicDetail(props){
                         <p className="release-date">Release Date: {song.release_date}</p>
                         <p className="description">Description: {song.description}</p>
 
-                        {is_duet ? 
-                            (<p className="duet-from">Duetted from: {<GetDuet currSong={song} songsArr={songsArr}/>}</p>)
+                        {is_duet ?
+                            (<p className="duet-from">Duetted from: {<GetDuet currSong={song} songsArr={songsArr} />}</p>)
                             : (<p></p>)}
 
-                        {<Likes numLikes={song.likes}/>} 
-                        {<Duets numDuets={song.duets}/>}
+                        {<Likes numLikes={song.likes} />}
+                        {<Duets numDuets={song.duets} />}
                         <div className="row">
-                            <AudioPlayer songsArr={songsArr} songid={song.id}/>
+                            <AudioPlayer songsArr={songsArr} songid={song.id} />
 
                         </div>
 
@@ -57,41 +57,41 @@ export function MusicDetail(props){
     );
 }
 
-function Likes({numLikes}){
+function Likes({ numLikes }) {
     const [likes, setLikes] = useState(numLikes);
 
     const handleLike = (event) => {
         setLikes(likes => likes + 1);
     };
-    return(
+    return (
         <div className="icon">
-        <IconButton onClick={handleLike} className="likes">
-            <p className="likes"><FcLike className="material-icons like-icon"/></p>
-        </IconButton>
-        {likes}
+            <IconButton onClick={handleLike} className="likes">
+                <p className="likes"><FcLike className="material-icons like-icon" /></p>
+            </IconButton>
+            {likes}
         </div>
     );
 }
 
-function Duets({numDuets}){
+function Duets({ numDuets }) {
     const [duets, setDuets] = useState(numDuets);
 
-    return(
+    return (
         <div className="icon">
-            <MdGroupAdd className="material-icons duet-icon"/>
+            <MdGroupAdd className="material-icons duet-icon" />
             {duets}
         </div>
     );
 }
 
-function GetDuet({currSong, songsArr}){
+function GetDuet({ currSong, songsArr }) {
 
     const duet_song = songsArr.filter((song) => {
         return currSong.duet_from === song.id;
     })
 
-    return(
-        <Link to={"/songs/"+duet_song[0].id} className="duet-from-link">
+    return (
+        <Link to={"/songs/" + duet_song[0].id} className="duet-from-link">
             {duet_song[0].title}
         </Link>
     )

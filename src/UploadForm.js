@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 export default function UploadForm(props) {
     const [userTitleInput, setUserTitleInput] = useState("");
     const [userDescInput, setUserDescInput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const { user } = props;
 
     const handleClick = async (event) => {
+        setIsLoading(true);
         const storage = getStorage();
         const newImageRef = ref(storage, "covers/" + userTitleInput + ".png");
         const newSongRef = ref(storage, "songs/" + userTitleInput + ".mp4");
@@ -21,6 +25,7 @@ export default function UploadForm(props) {
         props.uploadSong(props.user, userTitleInput, userDescInput, imgURL, songURL);
         setUserTitleInput("");
         setUserDescInput("");
+        setIsLoading(false);
     }
 
     const handleTitleChange = (event) => {
@@ -76,7 +81,9 @@ export default function UploadForm(props) {
             <label htmlFor="song-file" className="btn btn-success">Choose Song</label>
             <input id="song-file" type="file" accept="audio/*" onChange={handleSongChange} />
             <div></div>
+            {isLoading && <i class="fas fa-circle-notch fa-spin"></i> }
             {user &&
+        
                 <button className="btn btn-primary" type="button" onClick={handleClick}>
                     <span>Upload</span>
                 </button>}
