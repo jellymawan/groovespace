@@ -27,7 +27,7 @@ export function Browse(props) {
 
     return (
         <div>
-            <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} rawData={props.rawData}/>
+            <Search songs={displayedData} callBack={props.callBack} data={setDisplayedData} rawData={props.rawData} />
             <div className="row align-items-center">
                 <div className="col-3 sort-by">
                     Sort By:
