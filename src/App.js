@@ -38,7 +38,7 @@ function App(props) {
             <Route path=":songID" element={<MusicDetail songs={props.songs} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
-          <Route path="/browse" element={<Browse songs={search} callBack={setSearch}/>} />
+          <Route path="/browse" element={<Browse songs={search} callBack={setSearch} />} />
           <Route path="/about" element={<Static.AboutPage />} />
           <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />
