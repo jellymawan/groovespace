@@ -34,7 +34,7 @@ export function Upload(props) {
 
         const newSong = {
             "id": 131613613663136, //we might wanna do user id instead of song ID? Or add userID on top of song ID? Firebase does generate a song id for us, but I guess we can talk about that later
-            "artist": userObj.uid, //not sure if this is correct
+            "artist": userObj.displayName, //not sure if this is correct
             "title": newTitle,
             "description": newDescription,
             "release_date": Date.now(),

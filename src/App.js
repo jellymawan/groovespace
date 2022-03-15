@@ -10,7 +10,7 @@ import { Browse } from './Browse';
 import { MdOpenInNewOff, MdSettingsInputComponent } from 'react-icons/md';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
-import {Upload} from './Upload';
+import { Upload } from './Upload';
 
 
 
@@ -21,7 +21,6 @@ function App(props) {
 
   // state variable to update data based on user input
   const [search, setSearch] = useState(props.songs);
-  console.log(search);
   return (
     <div>
       <HeaderNav />
@@ -32,7 +31,7 @@ function App(props) {
             <Route path=":songID" element={<MusicDetail songs={props.songs} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
-          <Route path="/browse" element={<Browse songs={search} callBack={setSearch}/>} />
+          <Route path="/browse" element={<Browse songs={search} callBack={setSearch} />} />
           <Route path="/about" element={<Static.AboutPage />} />
           <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />
