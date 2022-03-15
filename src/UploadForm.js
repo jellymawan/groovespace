@@ -20,7 +20,7 @@ export default function UploadForm(props) {
         const imgURL = await getDownloadURL(newImageRef);
         await uploadBytes(newSongRef, songFile)
         const songURL = await getDownloadURL(newSongRef);
-        
+
         props.uploadSong(props.user, userTitleInput, userDescInput, imgURL, songURL);
         setUserTitleInput("");
         setUserDescInput("");
@@ -81,7 +81,7 @@ export default function UploadForm(props) {
             <input id="song-file" type="file" accept="audio/*" onChange={handleSongChange} />
             <div></div>
             {user &&
-        
+
                 <button className="btn btn-primary" type="button" onClick={handleClick}>
                     <span>Upload</span>
                 </button>}
