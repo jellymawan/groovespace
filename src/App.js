@@ -23,7 +23,7 @@ function App(props) {
 
 
   const [search, setSearch] = useState(props.songs);
-  //const [data, setData] = useState("");
+  const [data, setData] = useState("");
   useEffect(() => {
     const db = getDatabase();
     const songsRef = ref(db, 'songs');
@@ -34,7 +34,7 @@ function App(props) {
         const singleKey = {...database[key]}
         return singleKey
     })
-    //setData(songArray);  
+    setData(songArray);  
     setSearch(songArray);  
     function cleanup(){
       songs();
@@ -62,7 +62,7 @@ function App(props) {
             <Route path=":songID" element={<MusicDetail songs={search} />} />
             <Route index="/songs" element={<CardList songs={search} />} />
           </Route>
-          <Route path="/browse" element={<Browse songs={search} callBack={setSearch} />} />
+          <Route path="/browse" element={<Browse songs={search} data={data} callBack={setSearch} />} />
           <Route path="/about" element={<Static.AboutPage />} />
           <Route path="/upload" element={<Upload user={currentUser} />} />
           <Route path="/signin" element={<SignInPage user={currentUser} loginFunction={user} />} />

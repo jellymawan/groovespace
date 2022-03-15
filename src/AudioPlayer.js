@@ -34,6 +34,7 @@ export function AudioPlayer(props){
         }
         return songArr;
     }
+    console.log(song_arr);
 
     const songsRef = useRef([]);
     const intervalRef = useRef();
@@ -59,6 +60,7 @@ export function AudioPlayer(props){
         });
     }, [props.songid]);
 
+    
     useEffect(() => { //some code taken from https://letsbuildui.dev/articles/building-an-audio-player-with-react-hooks
         if(isPlaying){
             startTimer();

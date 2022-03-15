@@ -8,19 +8,25 @@ import musicData from './data/music-data.json';
 
 export function Browse(props) {
 
+    console.log(props.songs);
+
     const songsArr = props.songs;
-    console.log(songsArr);
     const [sortBy, setSortBy] = useState("relevance");
     const [displayedData, setDisplayedData] = useState(songsArr);
 
     console.log(displayedData);
 
     let MusicListArray = displayedData.map((song) => {
-
         let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id} />
         return newMusicItem;
     })
-    console.log(MusicListArray);
+
+
+    let temp = MusicListArray[0].props.songsArr.map((song) => {
+        let newMusicItem = <MusicList songsArr={songsArr} song={song} key={song.id} />
+        return newMusicItem;
+    })
+
 
     const handleSort = (event) => {
         setSortBy(event.target.value);
@@ -56,7 +62,7 @@ export function Browse(props) {
             </div>
             <div className="main-browse container-fluid">
                 <div className="row med-row">
-                    {MusicListArray}
+                    {temp}
                 </div>
             </div>
         </div>
@@ -91,35 +97,35 @@ function MusicList({ songsArr, song }) {
 
 }
 
-// export function Search(props) {
-//     const [query, setQuery] = useState("");
-//     const handleChange = (event) => {
-//         setQuery(event.target.value);
-//         // resets data to original data 
-//         props.data(musicData);
-//         props.callBack(musicData);
-//     }
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         const filteredArr = props.songs.filter((song) => {
-//             if (query === "") {
-//                 return song;
-//             } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
-//                 song.artist.toLowerCase().includes(query.toLowerCase())) {
-//                 return song;
-//             }
-//         });
-//         props.data(filteredArr);
-//         props.callBack(filteredArr);
-//     }
-//     return (
-//         <form className="d-flex m-auto" id="search-form" onSubmit={handleSubmit}>
-//             <label hidden htmlFor="search">Search</label>
-//             <input className="form-control me-2" type="search"
-//                 placeholder="Search user/song/artist"
-//                 aria-label="Search for user, song, artist"
-//                 id="search" onChange={handleChange} />
-//             <button className="btn btn-outline-secondary" type="submit" >SEARCH</button>
-//         </form>
-//     );
-// }
+export function Search(props) {
+    const [query, setQuery] = useState("");
+    const handleChange = (event) => {
+        setQuery(event.target.value);
+        // resets data to original data 
+        props.data(musicData);
+        props.callBack(musicData);
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const filteredArr = props.songs.filter((song) => {
+            if (query === "") {
+                return song;
+            } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
+                song.artist.toLowerCase().includes(query.toLowerCase())) {
+                return song;
+            }
+        });
+        props.data(filteredArr);
+        props.callBack(filteredArr);
+    }
+    return (
+        <form className="d-flex m-auto" id="search-form" onSubmit={handleSubmit}>
+            <label hidden htmlFor="search">Search</label>
+            <input className="form-control me-2" type="search"
+                placeholder="Search user/song/artist"
+                aria-label="Search for user, song, artist"
+                id="search" onChange={handleChange} />
+            <button className="btn btn-outline-secondary" type="submit" >SEARCH</button>
+        </form>
+    );
+}
