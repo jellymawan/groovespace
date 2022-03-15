@@ -8,15 +8,19 @@ export default function UploadForm(props) {
     const { user } = props;
 
     const handleClick = (event) => {
-        console.log("submitting!");
         const storage = getStorage();
-        const newImageRef = ref(storage, "covers/" + userTitleInput + ".png")
+        const newImageRef = ref(storage, "covers/" + userTitleInput + ".png");
         uploadBytes(newImageRef, imageFile)
+            .then(() => {
+                return getDownloadURL(newImageRef);
+            })
             .then((url) => {
-                props.uploadSong(props.user, userTitleInput, userDescInput, url, newAudio);
+                console.log(url);
+                props.uploadSong(props.user, userTitleInput, userDescInput, url, "audio placeholder");
             })
 
         setUserTitleInput("");
+        setUserDescInput("");
     }
 
     const handleTitleChange = (event) => {
