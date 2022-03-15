@@ -13,7 +13,6 @@ export default function HeaderNav(props) {
             <Nav>
               <NavLinks />
             </Nav>
-            {/* <Search songs={props.songs} callBack={props.callBack}/> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -21,7 +20,6 @@ export default function HeaderNav(props) {
   )
 }
 
-// component for navlinks
 export function NavLinks(props) {
   let handleClick = () => {
     document.getElementById('search-form').classList.remove('d-none');
@@ -40,34 +38,3 @@ export function NavLinks(props) {
     </ul>
   );
 }
-
-// component for search bar and functionality. PARTIALLY COMPLETE***
-// export function Search(props) {
-//   const [query, setQuery] = useState("");
-//   const handleChange = (event) => {
-//     setQuery(event.target.value);
-//     props.callBack(musicData);
-//   }
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const filteredArr = props.songs.filter((song) => {
-//       if (query === "") {
-//         return song;
-//       } else if (song.title.toLowerCase().includes(query.toLowerCase()) ||
-//       song.artist.toLowerCase().includes(query.toLowerCase())) {
-//         return song;
-//       }
-//     });
-//     props.callBack(filteredArr);
-//   }
-//   return (
-//     <form className="d-flex m-auto" id="search-form" onSubmit={handleSubmit}>
-//       <label hidden htmlFor="search">Search</label>
-//       <input className="form-control me-2" type="search"
-//       placeholder="Search user/song/artist"
-//       aria-label="Search for user, song, artist"
-//       id="search" onChange={handleChange} />
-//       <button className="btn btn-outline-secondary" type="submit" >SEARCH</button>
-//     </form>
-//   );
-// }
