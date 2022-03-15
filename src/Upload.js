@@ -42,7 +42,8 @@ export function Upload(props) {
             "audio": newAudio,
             "likes": 0,
             "duets": 0,
-            "duet_from": 0
+            "duet_from": 0,
+            "likes": 0
         }
         firebasePush(songsRef, newSong)
             .then(() => console.log("Pushed"))
