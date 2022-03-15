@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default function UploadForm(props) {
     const [userTitleInput, setUserTitleInput] = useState("");

@@ -48,12 +48,18 @@ export function NavLinks(props) {
         <li className="nav-item">
           <Nav.Link href="/signin">SIGN IN</Nav.Link>
         </li>}
+        {props.user &&
+        <li>
+          <Nav.Link href="/profile">PROFILE</Nav.Link>
+        </li>
+
+      }
       {props.user &&
         <li className="nav-item">
           <Nav.Link onClick={signOutFunction}>SIGN OUT</Nav.Link>
         </li>
-
       }
+      
 
     </ul>
   );
