@@ -11,6 +11,7 @@ import { MdOpenInNewOff, MdSettingsInputComponent } from 'react-icons/md';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth } from 'firebase/auth';
 import {Upload} from './Upload';
+import {getDatabase, ref, onValue} from 'firebase/database';
 
 
 
@@ -19,9 +20,14 @@ function App(props) {
 
   const currentUser = user;
 
+  let db = getDatabase();
+  let a = ref(db, 'songs');
+  onValue(a, (snapshot) => {
+    console.log(snapshot.val());
+  })
+
   // state variable to update data based on user input
   const [search, setSearch] = useState(props.songs);
-  console.log(search);
   return (
     <div>
       <HeaderNav />
