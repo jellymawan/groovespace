@@ -1,3 +1,3 @@
 # INFO 340 Project
 
-This repository contains code our INFO 340 group's project topic proposal with details about our problem/data domain as well as an app description.
+INFO 340 group project. Our website aims to build a platform for musicians to come together and collaborate with one another. It is finished, but there is further work that can be done to further the website, which may be implemented in the future. 
