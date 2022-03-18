@@ -1,122 +1,13 @@
-[
-    {
-        "id":1,
-        "artist":"Riko",
-        "title":"Future Shock",
-        "description":"Hardcore electric guitar.",
-        "release_date": "2021-12-31",
-        "cover": "/imgs/cover/Future Shock.jpeg",
-        "audio":"/audio/future-shock.mp3",
-        "likes": 30,
-        "duets": 3,
-        "duet_from": 0
-    },
-    {
-        "id":2,
-        "artist":"Fellar",
-        "title":"Into The Distance",
-        "description":"Piano with some hip pop in the background.",
-        "release_date": "2021-03-01",
-        "cover": "/imgs/cover/Black and White.jpeg",
-        "audio":"/audio/into-the-distance.mp3",
-        "likes": 15,
-        "duets": 0,
-        "duet_from": 7
-    },
-    {
-        "id":3,
-        "artist":"Shio",
-        "title":"Digital Shock",
-        "description":"Heavy metal.",
-        "release_date": "2022-02-01",
-        "cover": "/imgs/cover/Digital album cover.jpeg",
-        "audio":"/audio/digital-shock.mp3",
-        "likes": 20,
-        "duets": 0,
-        "duet_from": 0
-    },
-    {
-        "id":4,
-        "artist":"GoodBMusic",
-        "title":"Melody of Nature",
-        "description":"Clasical violin music with piano in background.",
-        "release_date": "2021-11-13",
-        "cover": "/imgs/cover/melody-of-nature.jpeg",
-        "audio":"/audio/melody-of-nature.mp3",
-        "likes": 3,
-        "duets": 0,
-        "duet_from": 0
-    },
-    {
-        "id":5,
-        "artist":"Epik High",
-        "title":"Born Hater (Instrumental)",
-        "description":"Born Hater cover contest. Add on to this instrumental to enter the contest!",
-        "release_date":"2014-11-19",
-        "cover": "/imgs/cover/shoebox.jpg",
-        "audio":"/audio/born-hater.mp3",
-        "likes": 150,
-        "duets": 2,
-        "duet_from": 0
-    },
-    {
-        "id":6,
-        "artist":"Blanco",
-        "title":"Water Flows",
-        "description":"Cover of Yiruma's famous song.",
-        "release_date": "2021-11-13",
-        "cover": "/imgs/cover/Moon.jpeg",
-        "audio": "/audio/water-flows.mp3",
-        "likes": 5,
-        "duets": 0,
-        "duet_from": 5
-    },
-    {
-        "id":7,
-        "artist":"AnaB",
-        "title":"Lofi",
-        "description":"My short lofi sample",
-        "release_date":"2019-06-17",
-        "cover": "/imgs/cover/lofi.jpg",
-        "audio":"/audio/lofi.mp3",
-        "likes": 48,
-        "duets": 1,
-        "duet_from": 0
-    },
-    {
-        "id":8,
-        "artist":"Halluci Nation",
-        "title":"Electric Pow Wow",
-        "description": "Traditional Pow Wow music remixed with Dubstep",
-        "release_date":"2010-10-29",
-        "cover": "/imgs/cover/halluci-nation.jpeg",
-        "audio":"/audio/electric pow wow.mp3",
-        "likes": 3000,
-        "duets": 0,
-        "duet_from": 0
-    },
-    {
-        "id":9,
-        "artist":"pyreneesjedi",
-        "title":"GUITAR RIFF",
-        "description":"neeed to change bassline",
-        "release_date":"2012-06-14",
-        "cover": "/imgs/cover/music.jpg",
-        "audio":"/audio/GUITAR RIF.mp3",
-        "likes": 168,
-        "duets": 0,
-        "duet_from": 0
-    },
-    {
-        "id":10,
-        "artist":"Keys of Moon",
-        "title":"Warm Memories",
-        "description":"Emotional inspiring piano",
-        "release_date":"2017-08-15",
-        "cover": "/imgs/cover/warm-memories.jpeg",
-        "audio":"/audio/Warm-Memories-Emotional-Inspiring-Piano.mp3",
-        "likes": 180,
-        "duets": 0,
-        "duet_from": 7
-    }
-]
+// INSERT DATA HERE
+
+// {
+//     songid:
+//     title:
+//     artist:
+//     description:
+//     audio:
+//     img:
+//     duets:
+//     likes:
+//     duet_from:
+// }
